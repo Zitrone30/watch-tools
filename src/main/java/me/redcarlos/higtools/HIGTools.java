@@ -1,12 +1,49 @@
 package me.redcarlos.higtools;
 
 import com.mojang.logging.LogUtils;
+
 import me.redcarlos.higtools.commands.Center;
 import me.redcarlos.higtools.commands.Coordinates;
 import me.redcarlos.higtools.commands.Panorama;
-import me.redcarlos.higtools.modules.highwayborers.*;
+import me.redcarlos.higtools.modules.highwayborers.AxisBorer;
+import me.redcarlos.higtools.modules.highwayborers.NegNegBorer;
+import me.redcarlos.higtools.modules.highwayborers.NegPosBorer;
+import me.redcarlos.higtools.modules.highwayborers.PosNegBorer;
+import me.redcarlos.higtools.modules.highwayborers.PosPosBorer;
 import me.redcarlos.higtools.modules.hud.TextPresets;
-import me.redcarlos.higtools.modules.main.*;
+import me.redcarlos.higtools.modules.main.AdvancedPlace;
+import me.redcarlos.higtools.modules.main.AfkLogout;
+import me.redcarlos.higtools.modules.main.AntiToS;
+import me.redcarlos.higtools.modules.main.AutoCenter;
+import me.redcarlos.higtools.modules.main.AutoDoors;
+import me.redcarlos.higtools.modules.main.AutoLogPlus;
+import me.redcarlos.higtools.modules.main.AutoWalkHIG;
+import me.redcarlos.higtools.modules.main.AutoWalkP;
+import me.redcarlos.higtools.modules.main.AxisViewer;
+import me.redcarlos.higtools.modules.main.BedrockWalk;
+import me.redcarlos.higtools.modules.main.BoomView;
+import me.redcarlos.higtools.modules.main.Conditions;
+import me.redcarlos.higtools.modules.main.DiscordRPC;
+import me.redcarlos.higtools.modules.main.DoneLogout;
+import me.redcarlos.higtools.modules.main.Excuse;
+import me.redcarlos.higtools.modules.main.Gravity;
+import me.redcarlos.higtools.modules.main.Groupmessage;
+import me.redcarlos.higtools.modules.main.HighwayBuilderHIG;
+import me.redcarlos.higtools.modules.main.HighwayTools;
+import me.redcarlos.higtools.modules.main.HitboxDesync;
+import me.redcarlos.higtools.modules.main.HotbarManager;
+import me.redcarlos.higtools.modules.main.Jitter;
+import me.redcarlos.higtools.modules.main.LiquidFillerHIG;
+import me.redcarlos.higtools.modules.main.MassIgnore;
+import me.redcarlos.higtools.modules.main.NoPingDif;
+import me.redcarlos.higtools.modules.main.OffhandManager;
+import me.redcarlos.higtools.modules.main.PermJukebox;
+import me.redcarlos.higtools.modules.main.Pulse;
+import me.redcarlos.higtools.modules.main.RangeCMD;
+import me.redcarlos.higtools.modules.main.SafetyNet;
+import me.redcarlos.higtools.modules.main.ScaffoldHIG;
+import me.redcarlos.higtools.modules.main.StopDrop;
+import me.redcarlos.higtools.modules.main.StreamerMode;
 import me.redcarlos.higtools.system.HIGTab;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
 import meteordevelopment.meteorclient.commands.Commands;
@@ -64,6 +101,7 @@ public class HIGTools extends MeteorAddon {
         // Modules
         Modules modules = Modules.get();
 
+        modules.add(new DoneLogout());
         modules.add(new AfkLogout());
         modules.add(new AutoCenter());
         modules.add(new AutoWalkHIG());
