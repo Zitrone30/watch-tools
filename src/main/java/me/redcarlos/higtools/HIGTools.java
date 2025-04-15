@@ -3,6 +3,7 @@ package me.redcarlos.higtools;
 import com.mojang.logging.LogUtils;
 import me.redcarlos.higtools.commands.Center;
 import me.redcarlos.higtools.commands.Coordinates;
+import me.redcarlos.higtools.commands.Panorama;
 import me.redcarlos.higtools.modules.highwayborers.*;
 import me.redcarlos.higtools.modules.hud.TextPresets;
 import me.redcarlos.higtools.modules.main.*;
@@ -54,6 +55,7 @@ public class HIGTools extends MeteorAddon {
         // Commands
         Commands.add(new Center());
         Commands.add(new Coordinates());
+        Commands.add(new Panorama());
 
         // Hud
         Hud hud = Systems.get(Hud.class);
@@ -83,6 +85,17 @@ public class HIGTools extends MeteorAddon {
         modules.add(new AdvancedPlace());
         modules.add(new Conditions());
         modules.add(new SafetyNet());
+        modules.add(new Gravity());
+        modules.add(new Jitter());
+        modules.add(new Pulse());
+        modules.add(new StopDrop());
+        modules.add(new Excuse());
+        modules.add(new BedrockWalk());
+        modules.add(new AntiToS());
+        modules.add(new AutoDoors());
+        modules.add(new StreamerMode());
+        modules.add(new AutoWalkP());
+        modules.add(new HitboxDesync());
         // Borers
         modules.add(new AxisBorer());
         modules.add(new NegNegBorer());

@@ -70,7 +70,7 @@ public class DiscordRPC extends Module {
     private final Setting<List<String>> line2Strings = sgLine2.add(new StringListSetting.Builder()
         .name("2nd-line-messages")
         .description("Messages used for the second line.")
-        .defaultValue("{player}", "Working on highways", "{server.player_count} players online")
+        .defaultValue("{player}", "Building Highways", "{server.player_count} players online")
         .onChanged(strings -> recompileLine2())
         .renderer(StarscriptTextBoxRenderer.class)
         .build()
@@ -110,7 +110,7 @@ public class DiscordRPC extends Module {
     }
 
     public DiscordRPC() {
-        super(HIGTools.MAIN, "discord-RPC", "Displays HIG Tools as an activity on discord.");
+        super(HIGTools.MAIN, "discord-RPC", "Displays Watchmen (Additions) as an activity on discord.");
 
         runInMainMenu = true;
     }
@@ -134,12 +134,12 @@ public class DiscordRPC extends Module {
     public void onActivate() {
         checkRPC();
 
-        DiscordIPC.start(981649207263903804L, null);
+        DiscordIPC.start(1359991033529761923L, null);
 
         rpc.setStart(System.currentTimeMillis() / 1000L);
 
-        String largeText = "HIGTools " + HIGTools.VERSION;
-        rpc.setLargeImage("higtools", largeText);
+            String largeText = "Watchmen Additions " + HIGTools.VERSION;
+        rpc.setLargeImage("watchmen", largeText);
 
         recompileLine1();
         recompileLine2();
@@ -231,7 +231,7 @@ public class DiscordRPC extends Module {
             } else line2Ticks++;
         } else {
             if (!lastWasInMainMenu) {
-                rpc.setDetails("HIG Tools " + HIGTools.VERSION);
+                rpc.setDetails("Watchmen Additions " + HIGTools.VERSION);
 
                 if (mc.currentScreen instanceof TitleScreen) rpc.setState("In main menu");
                 else if (mc.currentScreen instanceof SelectWorldScreen) rpc.setState("Selecting world");

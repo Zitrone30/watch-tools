@@ -1,0 +1,328 @@
+package me.redcarlos.higtools.utils;
+
+import java.awt.*;
+import java.io.File;
+import java.time.Instant;
+import java.util.Optional;
+import net.minecraft.util.Hand;
+import net.minecraft.text.Text;
+import net.minecraft.text.Style;
+import net.minecraft.item.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.text.ClickEvent;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.text.MutableText;
+import net.minecraft.network.packet.Packet;
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.enchantment.Enchantments;
+import net.minecraft.network.packet.c2s.play.*;
+import io.netty.util.internal.ThreadLocalRandom;
+import meteordevelopment.meteorclient.utils.Utils;
+import static meteordevelopment.meteorclient.MeteorClient.mc;
+import meteordevelopment.meteorclient.systems.modules.Modules;
+import net.minecraft.network.encryption.NetworkEncryptionUtils;
+import meteordevelopment.meteorclient.systems.modules.misc.AutoReconnect;
+import meteordevelopment.meteorclient.mixin.ClientPlayNetworkHandlerAccessor;
+
+/**
+ * @author Tas [@0xTas] <root@0xTas.dev>
+ **/
+public class StardustUtil {
+    public enum RainbowColor {
+        Reds(new String[]{"§c", "§4"}),
+        Yellows(new String[]{"§e", "§6"}),
+        Greens(new String[]{"§a", "§2"}),
+        Cyans(new String[]{"§b", "§3"}),
+        Blues(new String[]{"§9", "§1"}),
+        Purples(new String[]{"§d", "§5"});
+
+        public final String[] labels;
+
+        RainbowColor(String[] labels) { this.labels = labels; }
+
+        public static RainbowColor getFirst() {
+            return RainbowColor.values()[ThreadLocalRandom.current().nextInt(RainbowColor.values().length)];
+        }
+
+        public static RainbowColor getNext(RainbowColor previous) {
+            return switch (previous) {
+                case Reds -> Yellows;
+                case Yellows -> Greens;
+                case Greens -> Cyans;
+                case Cyans -> Blues;
+                case Blues -> Purples;
+                case Purples -> Reds;
+            };
+        }
+    }
+
+    public enum TextColor {
+        Black("§0"), White("§f"), Gray("§8"), Light_Gray("§7"),
+        Dark_Green("§2"), Green("§a"), Dark_Aqua("§3"), Aqua("§b"),
+        Dark_Blue("§1"), Blue("§9"), Dark_Red("§4"), Red("§c"),
+        Dark_Purple("§5"), Purple("§d"), Gold("§6"), Yellow("§e"),
+        Random("");
+
+        public final String label;
+
+        TextColor(String label) {
+            this.label = label;
+        }
+    }
+
+    public enum TextFormat {
+        Plain(""), Italic("§o"), Bold("§l"),
+        Underline("§n"), Strikethrough("§m"),
+        Obfuscated("§k");
+
+        public final String label;
+
+        TextFormat(String label) {
+            this.label = label;
+        }
+    }
+
+    /** Random Color-Code */
+    public static String rCC() {
+        String color = "§7";
+        TextColor[] colors = TextColor.values();
+
+        // Omit gray, light_gray, and black from accent colors.
+        while (color.equals("§0") || color.equals("§8") || color.equals("§7")) {
+            int luckyIndex = ThreadLocalRandom.current().nextInt(colors.length);
+            color = colors[luckyIndex].label;
+        }
+
+        return color;
+    }
+
+//    public static ItemStack chooseMenuIcon() {
+//        int luckyIndex = ThreadLocalRandom.current().nextInt(menuIcons.length);
+//
+//        return menuIcons[luckyIndex];
+//    }
+//    private static final ItemStack[] discIcons = {
+//        Items.MUSIC_DISC_5.getDefaultStack(),
+//        Items.MUSIC_DISC_11.getDefaultStack(),
+//        Items.MUSIC_DISC_13.getDefaultStack(),
+//        Items.MUSIC_DISC_CAT.getDefaultStack(),
+//        Items.MUSIC_DISC_FAR.getDefaultStack(),
+//        Items.MUSIC_DISC_MALL.getDefaultStack(),
+//        Items.MUSIC_DISC_STAL.getDefaultStack(),
+//        Items.MUSIC_DISC_WARD.getDefaultStack(),
+//        Items.MUSIC_DISC_WAIT.getDefaultStack(),
+//        Items.MUSIC_DISC_CHIRP.getDefaultStack(),
+//        Items.MUSIC_DISC_STRAD.getDefaultStack(),
+//        Items.MUSIC_DISC_RELIC.getDefaultStack(),
+//        Items.MUSIC_DISC_BLOCKS.getDefaultStack(),
+//        Items.MUSIC_DISC_MELLOHI.getDefaultStack(),
+//        Items.MUSIC_DISC_PIGSTEP.getDefaultStack(),
+//        Items.MUSIC_DISC_OTHERSIDE.getDefaultStack(),
+//    };
+//    private static final ItemStack[] doorIcons = {
+//        Items.OAK_DOOR.getDefaultStack(),
+//        Items.BIRCH_DOOR.getDefaultStack(),
+//        Items.BAMBOO_DOOR.getDefaultStack(),
+//        Items.CHERRY_DOOR.getDefaultStack(),
+//        Items.JUNGLE_DOOR.getDefaultStack(),
+//        Items.ACACIA_DOOR.getDefaultStack(),
+//        Items.SPRUCE_DOOR.getDefaultStack(),
+//        Items.WARPED_DOOR.getDefaultStack(),
+//        Items.CRIMSON_DOOR.getDefaultStack(),
+//        Items.MANGROVE_DOOR.getDefaultStack(),
+//        Items.DARK_OAK_DOOR.getDefaultStack(),
+//    };
+//    private static final ItemStack[] menuIcons = {
+//        Items.CAKE.getDefaultStack(),
+//        Items.BEDROCK.getDefaultStack(),
+//        Items.GOAT_HORN.getDefaultStack(),
+//        Items.DRAGON_EGG.getDefaultStack(),
+//        Items.FILLED_MAP.getDefaultStack(),
+//        Items.PINK_TULIP.getDefaultStack(),
+//        Items.TURTLE_EGG.getDefaultStack(),
+//        Items.NETHER_STAR.getDefaultStack(),
+//        Items.WITHER_ROSE.getDefaultStack(),
+//        Items.PINK_PETALS.getDefaultStack(),
+//        Items.WARPED_SIGN.getDefaultStack(),
+//        Items.CHERRY_SIGN.getDefaultStack(),
+//        Items.WRITTEN_BOOK.getDefaultStack(),
+//        Items.DAMAGED_ANVIL.getDefaultStack(),
+//        Items.CHERRY_SAPLING.getDefaultStack(),
+//        Items.JACK_O_LANTERN.getDefaultStack(),
+//        Items.FIREWORK_ROCKET.getDefaultStack(),
+//        Items.TOTEM_OF_UNDYING.getDefaultStack(),
+//        Items.LIME_SHULKER_BOX.getDefaultStack(),
+//        Items.AMETHYST_CLUSTER.getDefaultStack(),
+//        Items.FLOWERING_AZALEA.getDefaultStack(),
+//        Items.PINK_SHULKER_BOX.getDefaultStack(),
+//        Items.GILDED_BLACKSTONE.getDefaultStack(),
+//        Items.HEART_POTTERY_SHERD.getDefaultStack(),
+//        Items.LIGHT_BLUE_SHULKER_BOX.getDefaultStack(),
+//        Items.ENCHANTED_GOLDEN_APPLE.getDefaultStack(),
+//        Items.HEARTBREAK_POTTERY_SHERD.getDefaultStack(),
+//        discIcons[ThreadLocalRandom.current().nextInt(discIcons.length)],
+//        doorIcons[ThreadLocalRandom.current().nextInt(doorIcons.length)],
+//        getCustomIcons()[ThreadLocalRandom.current().nextInt(getCustomIcons().length)]
+//    };
+//
+//    private static ItemStack[] getCustomIcons() {
+//        ItemStack enchantedPick = new ItemStack(
+//            ThreadLocalRandom.current().nextInt(2) == 0 ? Items.WOODEN_PICKAXE : Items.GOLDEN_PICKAXE);
+//        enchantedPick.addEnchantment(Enchantments.MENDING, 1);
+//
+//        var stardustPick = ThreadLocalRandom.current().nextInt(2) == 0 ? Items.NETHERITE_PICKAXE : Items.DIAMOND_PICKAXE;
+//        NbtCompound stardustNbt = stardustPick.getDefaultStack().getNbt();
+//        if (stardustNbt != null) stardustNbt.putInt("Damage", 32769);
+//        ItemStack stardust = ItemStackAccessor.invokeInit(
+//            stardustPick, 1,
+//            stardustNbt == null ? Optional.empty() : Optional.of(stardustNbt)
+//        );
+//        stardust.setCustomName(Text.literal("Stardust"));
+//        stardust.addEnchantment(Enchantments.MENDING, 1);
+//
+//        var meteoritePick = ThreadLocalRandom.current().nextInt(2) == 0 ? Items.NETHERITE_PICKAXE : Items.DIAMOND_PICKAXE;
+//        NbtCompound meteoriteNbt = meteoritePick.getDefaultStack().getNbt();
+//        if (meteoriteNbt != null) meteoriteNbt.putInt("Damage", -32769);
+//        ItemStack meteorite = ItemStackAccessor.invokeInit(
+//            meteoritePick, 69,
+//            meteoriteNbt == null ? Optional.empty() : Optional.of(meteoriteNbt)
+//        );
+//        meteorite.setCustomName(Text.literal("Meteorite"));
+//        meteorite.addEnchantment(Enchantments.MENDING, 1);
+//
+//        ItemStack[] pickaxes = new ItemStack[]{enchantedPick, stardust, meteorite};
+//
+//        var helmet = ThreadLocalRandom.current().nextInt(2) == 0 ?
+//            Items.DIAMOND_HELMET : Items.GOLDEN_HELMET;
+//        var chestplate = ThreadLocalRandom.current().nextInt(2) == 0 ?
+//            Items.DIAMOND_CHESTPLATE : Items.GOLDEN_CHESTPLATE;
+//        var pants = ThreadLocalRandom.current().nextInt(2) == 0 ?
+//            Items.DIAMOND_LEGGINGS : Items.GOLDEN_LEGGINGS;
+//        var shoes = ThreadLocalRandom.current().nextInt(2) == 0 ?
+//            Items.DIAMOND_BOOTS : Items.GOLDEN_BOOTS;
+//
+//        ItemStack stackedHelmets = new ItemStack(helmet, 69);
+//        ItemStack stackedChestplates = new ItemStack(chestplate, 69);
+//        ItemStack stackedLeggings = new ItemStack(pants, 69);
+//        ItemStack stackedBoots = new ItemStack(shoes, 69);
+//        stackedHelmets.addEnchantment(Enchantments.MENDING, 1);
+//        stackedChestplates.addEnchantment(Enchantments.MENDING, 1);
+//        stackedLeggings.addEnchantment(Enchantments.MENDING, 1);
+//        stackedBoots.addEnchantment(Enchantments.MENDING, 1);
+//        ItemStack[] stackedArmor = new ItemStack[]{stackedHelmets, stackedChestplates, stackedLeggings, stackedBoots};
+//
+//        ItemStack sword32k = new ItemStack(
+//            ThreadLocalRandom.current().nextInt(2) == 0 ? Items.DIAMOND_SWORD : Items.WOODEN_SWORD);
+//        sword32k.addEnchantment(Enchantments.SHARPNESS, 32767);
+//
+//        ItemStack illegalBow = new ItemStack(Items.BOW);
+//        illegalBow.addEnchantment(Enchantments.MENDING, 1);
+//        illegalBow.addEnchantment(Enchantments.INFINITY, 1);
+//
+//        ItemStack bindingPumpkin = new ItemStack(Items.CARVED_PUMPKIN);
+//        bindingPumpkin.addEnchantment(Enchantments.BINDING_CURSE, 1);
+//
+//        ItemStack[] enchantedGlass = new ItemStack[] {
+//            Items.GLASS.getDefaultStack(),
+//            Items.RED_STAINED_GLASS.getDefaultStack(),
+//            Items.CYAN_STAINED_GLASS.getDefaultStack(),
+//            Items.LIME_STAINED_GLASS.getDefaultStack(),
+//            Items.PINK_STAINED_GLASS.getDefaultStack(),
+//            Items.WHITE_STAINED_GLASS.getDefaultStack(),
+//            Items.BLACK_STAINED_GLASS.getDefaultStack(),
+//            Items.LIGHT_BLUE_STAINED_GLASS.getDefaultStack(),
+//        };
+//
+//        for (ItemStack g : enchantedGlass) {
+//            g.addEnchantment(Enchantments.MENDING, 1);
+//        }
+//
+//        ItemStack cgiElytra = new ItemStack(Items.ELYTRA);
+//        cgiElytra.addEnchantment(Enchantments.MENDING, 420);
+//
+//        ItemStack ripTridentFly = new ItemStack(Items.TRIDENT);
+//        ripTridentFly.addEnchantment(Enchantments.RIPTIDE, 3);
+//
+//        return new ItemStack[] {
+//            sword32k, illegalBow, bindingPumpkin, cgiElytra, ripTridentFly,
+//            pickaxes[ThreadLocalRandom.current().nextInt(pickaxes.length)],
+//            stackedArmor[ThreadLocalRandom.current().nextInt(stackedArmor.length)],
+//            enchantedGlass[ThreadLocalRandom.current().nextInt(enchantedGlass.length)]
+//        };
+//    }
+
+    public static boolean checkOrCreateFile(MinecraftClient mc, String fileName) {
+        File file =FabricLoader.getInstance().getGameDir().resolve(fileName).toFile();
+
+        if (!file.exists()) {
+            try {
+                if (file.createNewFile()) {
+                    if (mc.player != null) {
+                        Text msg = Text.of("§7Click §2§lhere §r§7to open the file.");
+                        Style style = Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_FILE, file.getAbsolutePath()));
+
+                        MutableText txt = msg.copyContentOnly().setStyle(style);
+                    }
+                    return true;
+                }
+            }catch (Exception err) {
+            }
+        } else return true;
+
+        return false;
+    }
+
+    public static void openFile(MinecraftClient mc, String fileName) {
+        File file = FabricLoader.getInstance().getGameDir().resolve(fileName).toFile();
+
+        if (Desktop.isDesktopSupported()) {
+            EventQueue.invokeLater(() -> {
+                try {
+                    Desktop.getDesktop().open(file);
+                }catch (Exception err) {}
+            });
+        } else {
+            try {
+                Runtime runtime = Runtime.getRuntime();
+                if (System.getenv("OS") == null) return;
+                if (System.getenv("OS").contains("Windows")) {
+                    runtime.exec("rundll32 url.dll, FileProtocolHandler " + file.getAbsolutePath());
+                }else {
+                    runtime.exec("xdg-open " + file.getAbsolutePath());
+                }
+            } catch (Exception err) {}
+        }
+    }
+
+    public enum IllegalDisconnectMethod {
+        Slot, Chat, Interact, Movement, SequenceBreak
+    }
+
+    public static void illegalDisconnect(boolean disableAutoReconnect, IllegalDisconnectMethod illegalDisconnectMethod) {
+        if (!Utils.canUpdate()) return;
+        if (disableAutoReconnect) disableAutoReconnect();
+
+        Packet<?> illegalPacket = null;
+        switch (illegalDisconnectMethod) {
+            case Slot -> illegalPacket = new UpdateSelectedSlotC2SPacket(-69);
+            case Chat -> illegalPacket = new ChatMessageC2SPacket(
+                "§",
+                Instant.now(),
+                NetworkEncryptionUtils.SecureRandomUtil.nextLong(),
+                null,
+                ((ClientPlayNetworkHandlerAccessor) mc.getNetworkHandler()).getLastSeenMessagesCollector().collect().update()
+            );
+            case Interact -> illegalPacket = PlayerInteractEntityC2SPacket.interact(mc.player, false, Hand.MAIN_HAND);
+            case Movement -> illegalPacket = new PlayerMoveC2SPacket.PositionAndOnGround(Double.NaN, 69, Double.NaN, false, true);
+            case SequenceBreak -> illegalPacket = new PlayerInteractItemC2SPacket(Hand.MAIN_HAND, -420, 2, 2);
+        }
+    }
+
+    public static void disableAutoReconnect() {
+        Modules mods = Modules.get();
+        if (mods == null) return;
+        AutoReconnect atrc = mods.get(AutoReconnect.class);
+        if (atrc.isActive()) atrc.toggle();
+    }
+}
