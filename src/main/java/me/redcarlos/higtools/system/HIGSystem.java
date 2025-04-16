@@ -21,7 +21,7 @@ public class HIGSystem extends System<HIGSystem> {
     public final Setting<String> prefix = sgPrefix.add(new StringSetting.Builder()
         .name("prefix")
         .description("What prefix to use for HIG modules.")
-        .defaultValue("HIG Tools")
+        .defaultValue("WM Tools")
         .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
         .build()
     );
@@ -29,7 +29,7 @@ public class HIGSystem extends System<HIGSystem> {
     public final Setting<SettingColor> prefixColor = sgPrefix.add(new ColorSetting.Builder()
         .name("prefix-color")
         .description("Color display for the prefix.")
-        .defaultValue(new SettingColor(145, 61, 226, 255))
+        .defaultValue(new SettingColor(145, 0, 0, 255))
         .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
         .build()
     );
@@ -54,7 +54,7 @@ public class HIGSystem extends System<HIGSystem> {
     public final Setting<String> leftBracket = sgPrefix.add(new StringSetting.Builder()
         .name("left-bracket")
         .description("What to be displayed as left bracket for the prefix.")
-        .defaultValue("[")
+        .defaultValue("<")
         .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
         .build()
     );
@@ -62,7 +62,7 @@ public class HIGSystem extends System<HIGSystem> {
     public final Setting<String> rightBracket = sgPrefix.add(new StringSetting.Builder()
         .name("right-bracket")
         .description("What to be displayed as right bracket for the prefix.")
-        .defaultValue("]")
+        .defaultValue(">")
         .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
         .build()
     );

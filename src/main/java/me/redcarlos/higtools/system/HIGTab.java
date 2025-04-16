@@ -10,7 +10,7 @@ import net.minecraft.client.gui.screen.Screen;
 
 public class HIGTab extends Tab {
     public HIGTab() {
-        super("HIG Tools");
+        super("WM Tools");
     }
 
     @Override

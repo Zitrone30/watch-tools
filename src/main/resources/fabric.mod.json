@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "name": "Watchmen Additions",
   "id": "higtools",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Meteor client additions for use by The Watchmen.",
   "authors": [
     "RocoPlays & DNS"
