@@ -27,7 +27,7 @@ public class DoneLogout extends Module {
     );
 
     public DoneLogout() {
-        super(HIGTools.MAIN, "HighwayCheck", "Logs out if there's another highway in front of the player.");
+        super(HIGTools.MAIN, "Highway Check", "Logs out if there's another highway in front of the player.");
     }
 
 @EventHandler
