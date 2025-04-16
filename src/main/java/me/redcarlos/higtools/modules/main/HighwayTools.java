@@ -1,7 +1,7 @@
-package me.redcarlos.higtools.modules.main;
+package me.DNS.vmtools.modules.main;
 
-import me.redcarlos.higtools.HIGTools;
-import me.redcarlos.higtools.modules.highwayborers.*;
+import me.DNS.higtools.WMTools;
+import me.DNS.vmtools.modules.highwayborers.*;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;

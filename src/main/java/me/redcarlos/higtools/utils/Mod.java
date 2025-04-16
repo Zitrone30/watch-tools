@@ -1,3 +1,3 @@
-package me.redcarlos.higtools.utils;
+package me.DNS.vmtools.utils;
 
 import meteordevelopment.meteorclient.systems.modules.Module;

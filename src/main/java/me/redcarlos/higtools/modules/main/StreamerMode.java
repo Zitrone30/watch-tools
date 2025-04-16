@@ -1,10 +1,10 @@
-package me.redcarlos.higtools.modules.main;
+package me.DNS.vmtools.modules.main;
 
 import java.util.Iterator;
 import java.util.Optional;
 
-import me.redcarlos.higtools.utils.GenericNamesStuff;
-import me.redcarlos.higtools.HIGTools;
+import me.DNS.vmtools.utils.GenericNamesStuff;
+import me.DNS.higtools.WMTools;
 import meteordevelopment.meteorclient.MeteorClient;
 import meteordevelopment.meteorclient.events.packets.PacketEvent;
 import meteordevelopment.meteorclient.settings.BoolSetting;

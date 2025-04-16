@@ -1,6 +1,6 @@
-package me.redcarlos.higtools.modules.highwayborers;
+package me.DNS.vmtools.modules.highwayborers;
 
-import me.redcarlos.higtools.HIGTools;
+import me.DNS.higtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.EnumSetting;
 import meteordevelopment.meteorclient.settings.IntSetting;
@@ -14,7 +14,7 @@ import net.minecraft.util.math.Direction;
 
 import java.util.stream.IntStream;
 
-import static me.redcarlos.higtools.utils.HIGUtils.*;
+import static me.DNS.vmtools.utils.HIGUtils.*;
 
 public abstract class BorerModule extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();

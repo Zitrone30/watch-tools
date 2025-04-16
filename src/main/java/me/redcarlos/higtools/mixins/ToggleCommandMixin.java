@@ -1,8 +1,8 @@
-package me.redcarlos.higtools.mixins;
+package me.DNS.vmtools.mixins;
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import me.redcarlos.higtools.modules.highwayborers.*;
-import me.redcarlos.higtools.modules.main.*;
+import me.DNS.vmtools.modules.highwayborers.*;
+import me.DNS.vmtools.modules.main.*;
 import meteordevelopment.meteorclient.commands.Command;
 import meteordevelopment.meteorclient.commands.commands.ToggleCommand;
 import meteordevelopment.meteorclient.systems.modules.Module;

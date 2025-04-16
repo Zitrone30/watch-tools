@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "me.redcarlos.higtools.mixins",
+  "package": "me.DNS.vmtools.mixins",
   "compatibilityLevel": "JAVA_21",
   "injectors": {
     "defaultRequire": 1

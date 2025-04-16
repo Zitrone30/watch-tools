@@ -8,8 +8,8 @@
     "RocoPlays & DNS"
   ],
   "contact": {
-    "issues": "https://github.com/RedCarlos26/HIGTools/issues",
-    "sources": "https://github.com/RedCarlos26/HIGTools",
+    "issues": "https://github.com/Zitrone30/watch-tools/issues",
+    "sources": "https://github.com/Zitrone30/watch-tools/",
     "discord": "https://discord.gg/a4jkKGJNdJ"
   },
   "license": "GPL-3.0",
@@ -17,7 +17,7 @@
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "me.redcarlos.higtools.HIGTools"
+      "me.DNS.higtools.WMTools"
     ]
   },
   "mixins": [

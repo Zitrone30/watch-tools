@@ -1,4 +1,4 @@
-package me.redcarlos.higtools.system;
+package me.DNS.vmtools.system;
 
 import meteordevelopment.meteorclient.gui.GuiTheme;
 import meteordevelopment.meteorclient.gui.tabs.Tab;

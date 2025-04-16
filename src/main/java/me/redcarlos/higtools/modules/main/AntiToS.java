@@ -1,4 +1,4 @@
-package me.redcarlos.higtools.modules.main;
+package me.DNS.vmtools.modules.main;
 
 import java.io.File;
 import java.util.HashSet;
@@ -6,10 +6,10 @@ import java.nio.file.Files;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-import me.redcarlos.higtools.HIGTools;
+import me.DNS.higtools.WMTools;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
-import me.redcarlos.higtools.utils.StardustUtil;
+import me.DNS.vmtools.utils.StardustUtil;
 import net.minecraft.block.entity.SignText;
 import net.fabricmc.loader.api.FabricLoader;
 import meteordevelopment.meteorclient.settings.*;

@@ -4,7 +4,7 @@
  * Download Baritone here : https://github.com/cabaletta/baritonefile
  */
 
-package me.redcarlos.higtools.utils;
+package me.DNS.vmtools.utils;
 
 import org.apache.commons.lang3.SystemUtils;
 
@@ -14,9 +14,6 @@ import java.io.IOException;
 /**
  * This class is not called from the main game thread.
  * Do not refer to any Minecraft classes, it wouldn't be thread safe.
- *
- * @author aUniqueUser
- * @modified by RedCarlos
  */
 public class NotificationHelper {
 

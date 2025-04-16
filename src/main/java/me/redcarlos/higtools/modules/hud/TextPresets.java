@@ -1,6 +1,6 @@
-package me.redcarlos.higtools.modules.hud;
+package me.DNS.vmtools.modules.hud;
 
-import me.redcarlos.higtools.HIGTools;
+import me.DNS.higtools.WMTools;
 import meteordevelopment.meteorclient.systems.hud.HudElementInfo;
 import meteordevelopment.meteorclient.systems.hud.elements.TextHud;
 

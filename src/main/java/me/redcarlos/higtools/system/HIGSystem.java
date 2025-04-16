@@ -1,6 +1,6 @@
-package me.redcarlos.higtools.system;
+package me.DNS.vmtools.system;
 
-import me.redcarlos.higtools.HIGTools;
+import me.DNS.higtools.WMTools;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.System;
 import meteordevelopment.meteorclient.systems.Systems;
@@ -22,7 +22,7 @@ public class HIGSystem extends System<HIGSystem> {
         .name("prefix")
         .description("What prefix to use for HIG modules.")
         .defaultValue("WM Tools")
-        .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
+        .onChanged(p -> ChatUtils.registerCustomPrefix("me.DNS.vmtools", this::getPrefix))
         .build()
     );
 
@@ -30,7 +30,7 @@ public class HIGSystem extends System<HIGSystem> {
         .name("prefix-color")
         .description("Color display for the prefix.")
         .defaultValue(new SettingColor(145, 0, 0, 255))
-        .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
+        .onChanged(p -> ChatUtils.registerCustomPrefix("me.DNS.vmtools", this::getPrefix))
         .build()
     );
 
@@ -38,7 +38,7 @@ public class HIGSystem extends System<HIGSystem> {
         .name("prefix-format")
         .description("What type of minecraft formatting should be applied to the prefix.")
         .defaultValue(Format.Normal)
-        .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
+        .onChanged(p -> ChatUtils.registerCustomPrefix("me.DNS.vmtools", this::getPrefix))
         .build()
     );
 
@@ -46,7 +46,7 @@ public class HIGSystem extends System<HIGSystem> {
         .name("format-brackets")
         .description("Whether the formatting should apply to the brackets as well.")
         .visible(() -> prefixFormat.get() != Format.Normal)
-        .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
+        .onChanged(p -> ChatUtils.registerCustomPrefix("me.DNS.vmtools", this::getPrefix))
         .defaultValue(true)
         .build()
     );
@@ -55,7 +55,7 @@ public class HIGSystem extends System<HIGSystem> {
         .name("left-bracket")
         .description("What to be displayed as left bracket for the prefix.")
         .defaultValue("<")
-        .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
+        .onChanged(p -> ChatUtils.registerCustomPrefix("me.DNS.vmtools", this::getPrefix))
         .build()
     );
 
@@ -63,7 +63,7 @@ public class HIGSystem extends System<HIGSystem> {
         .name("right-bracket")
         .description("What to be displayed as right bracket for the prefix.")
         .defaultValue(">")
-        .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
+        .onChanged(p -> ChatUtils.registerCustomPrefix("me.DNS.vmtools", this::getPrefix))
         .build()
     );
 
@@ -71,7 +71,7 @@ public class HIGSystem extends System<HIGSystem> {
         .name("left-color")
         .description("Color display for the left bracket.")
         .defaultValue(new SettingColor(150, 150, 150, 255))
-        .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
+        .onChanged(p -> ChatUtils.registerCustomPrefix("me.DNS.vmtools", this::getPrefix))
         .build()
     );
 
@@ -79,13 +79,13 @@ public class HIGSystem extends System<HIGSystem> {
         .name("right-color")
         .description("Color display for the right bracket.")
         .defaultValue(new SettingColor(150, 150, 150, 255))
-        .onChanged(p -> ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix))
+        .onChanged(p -> ChatUtils.registerCustomPrefix("me.DNS.vmtools", this::getPrefix))
         .build()
     );
 
     public HIGSystem() {
         super("hig-tools");
-        ChatUtils.registerCustomPrefix("me.redcarlos.higtools", this::getPrefix);
+        ChatUtils.registerCustomPrefix("me.DNS.vmtools", this::getPrefix);
     }
 
     public static HIGSystem get() {

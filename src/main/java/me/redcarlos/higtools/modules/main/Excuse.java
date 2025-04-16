@@ -1,6 +1,6 @@
-package me.redcarlos.higtools.modules.main;
+package me.DNS.vmtools.modules.main;
 
-import me.redcarlos.higtools.HIGTools;
+import me.DNS.higtools.WMTools;
 import meteordevelopment.meteorclient.events.game.SendMessageEvent;
 import meteordevelopment.meteorclient.settings.Setting;
 import meteordevelopment.meteorclient.settings.SettingGroup;
@@ -8,7 +8,7 @@ import meteordevelopment.meteorclient.settings.StringListSetting;
 import meteordevelopment.meteorclient.settings.StringSetting;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
-import me.redcarlos.higtools.HIGTools;
+import me.DNS.higtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.utils.player.FindItemResult;
@@ -18,7 +18,7 @@ import meteordevelopment.orbit.EventHandler;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.s2c.common.DisconnectS2CPacket;
 import net.minecraft.text.Text;
-import me.redcarlos.higtools.utils.KickEvent;
+import me.DNS.vmtools.utils.KickEvent;
 
 import java.util.List;
 import java.util.Random;

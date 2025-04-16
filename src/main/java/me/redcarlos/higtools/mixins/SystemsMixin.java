@@ -1,6 +1,6 @@
-package me.redcarlos.higtools.mixins;
+package me.DNS.vmtools.mixins;
 
-import me.redcarlos.higtools.system.HIGSystem;
+import me.DNS.vmtools.system.HIGSystem;
 import meteordevelopment.meteorclient.systems.System;
 import meteordevelopment.meteorclient.systems.Systems;
 import org.spongepowered.asm.mixin.Mixin;

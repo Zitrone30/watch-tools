@@ -1,4 +1,4 @@
-package me.redcarlos.higtools.utils;
+package me.DNS.vmtools.utils;
 
 public enum ListMode {
     Blacklist,

@@ -1,4 +1,4 @@
-package me.redcarlos.higtools.utils;
+package me.DNS.vmtools.utils;
 
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;

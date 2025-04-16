@@ -1,4 +1,4 @@
-package me.redcarlos.higtools.utils;
+package me.DNS.vmtools.utils;
 
 import java.util.Optional;
 import net.minecraft.item.ItemStack;

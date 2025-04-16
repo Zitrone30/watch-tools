@@ -1,4 +1,4 @@
-package me.redcarlos.higtools.commands;
+package me.DNS.vmtools.commands;
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import meteordevelopment.meteorclient.commands.Command;

@@ -4,10 +4,10 @@
  * Enhanced by RedCarlos26
  */
 
-package me.redcarlos.higtools.modules.main;
+package me.DNS.vmtools.modules.main;
 
-import me.redcarlos.higtools.HIGTools;
-import me.redcarlos.higtools.utils.HIGUtils;
+import me.DNS.higtools.WMTools;
+import me.DNS.vmtools.utils.HIGUtils;
 import meteordevelopment.meteorclient.events.game.GameLeftEvent;
 import meteordevelopment.meteorclient.events.packets.PacketEvent;
 import meteordevelopment.meteorclient.events.render.Render2DEvent;

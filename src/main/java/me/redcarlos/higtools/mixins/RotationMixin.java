@@ -1,4 +1,4 @@
-package me.redcarlos.higtools.mixins;
+package me.DNS.vmtools.mixins;
 
 import meteordevelopment.meteorclient.events.game.GameLeftEvent;
 import meteordevelopment.meteorclient.events.game.OpenScreenEvent;

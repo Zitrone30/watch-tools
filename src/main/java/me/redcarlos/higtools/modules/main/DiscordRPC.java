@@ -1,6 +1,6 @@
-package me.redcarlos.higtools.modules.main;
+package me.DNS.vmtools.modules.main;
 
-import me.redcarlos.higtools.HIGTools;
+import me.DNS.higtools.WMTools;
 import meteordevelopment.discordipc.DiscordIPC;
 import meteordevelopment.discordipc.RichPresence;
 import meteordevelopment.meteorclient.events.game.OpenScreenEvent;
