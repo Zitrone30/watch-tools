@@ -5,7 +5,7 @@ import meteordevelopment.meteorclient.systems.hud.HudElementInfo;
 import meteordevelopment.meteorclient.systems.hud.elements.TextHud;
 
 public class TextPresets {
-    public static final HudElementInfo<TextHud> INFO = new HudElementInfo<>(WMTools.HUD, "higtools-presets", "Displays text with Starscript.", TextPresets::create);
+    public static final HudElementInfo<TextHud> INFO = new HudElementInfo<>(WMTools.HUD, "wmtools-presets", "Displays text with Starscript.", TextPresets::create);
 
     private static TextHud create() {
         return new TextHud(INFO);
@@ -17,7 +17,7 @@ public class TextPresets {
         addPreset("Opposite Coords", "{player.opposite_dimension != \"End\" ? player.opposite_dimension + \":\" : \"\"} #1{player.opposite_dimension != \"End\" ? \"\" + floor(player.opposite_dim_pos.x) + \", \" + floor(player.opposite_dim_pos.z) : \"\"}", 0);
 
         addPreset("KM/H Speed", "Speed: #1{roundToString(player.speed * 3.6, 1)} km/h", 0);
-        addPreset("Watermark", "Watchmen Additions #1{higtools.version}", Integer.MAX_VALUE);
+        addPreset("Watermark", "Watchmen Additions #1{wmtools.version}", Integer.MAX_VALUE);
         addPreset("Welcome Hud", "Welcome to Watchmen Additions, #1{meteor.is_module_active(\"name-protect\") ?  meteor.get_module_setting(\"name-protect\", \"name\") : player._toString}", 0);
     }
 

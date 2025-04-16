@@ -52,7 +52,7 @@ public abstract class ToggleCommandMixin extends Command {
 
     @Inject(method = "build", at = @At("HEAD"))
     private void inject(LiteralArgumentBuilder<CommandSource> builder, CallbackInfo ci) {
-        builder.then(literal("higtools").then(literal("off").executes(context -> {
+        builder.then(literal("wmtools").then(literal("off").executes(context -> {
             Modules modules = Modules.get();
 
             Arrays.stream(borerModules).forEach(module -> {

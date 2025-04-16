@@ -34,7 +34,7 @@ public class NotificationHelper {
             try {
                 if (trayIcon == null) {
                     SystemTray tray = SystemTray.getSystemTray();
-                    Image image = Toolkit.getDefaultToolkit().createImage("resources/assets/higtools/chat/icon.png");
+                    Image image = Toolkit.getDefaultToolkit().createImage("resources/assets/wmtools/chat/icon.png");
 
                     trayIcon = new TrayIcon(image, "WMTools");
                     trayIcon.setImageAutoSize(true);

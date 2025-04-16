@@ -62,7 +62,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
 public class WMTools extends MeteorAddon {
-    public static final String MOD_ID = "higtools";
+    public static final String MOD_ID = "wmtools";
     public static final ModMetadata METADATA;
     public static final String VERSION;
     public static final Category MAIN;
