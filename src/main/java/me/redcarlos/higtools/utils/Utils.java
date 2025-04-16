@@ -1,4 +1,4 @@
-package me.DNS.vmtools.utils;
+package me.DNS.wmtools.utils;
 
 import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;

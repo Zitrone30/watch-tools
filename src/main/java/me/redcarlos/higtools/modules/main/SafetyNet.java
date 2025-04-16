@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.render.Render3DEvent;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.renderer.ShapeMode;
@@ -145,7 +145,7 @@ public class SafetyNet extends Module {
     private double placeRange = 4;
 
     public SafetyNet() {
-        super(HIGTools.MAIN, "Catcher", "Catches you with blocks if you fall under a set Y level");
+        super(WMTools.MAIN, "Catcher", "Catches you with blocks if you fall under a set Y level");
     }
 
     @Override

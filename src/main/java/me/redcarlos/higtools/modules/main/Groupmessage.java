@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.game.SendMessageEvent;
 import meteordevelopment.meteorclient.settings.Setting;
 import meteordevelopment.meteorclient.settings.SettingGroup;
@@ -28,7 +28,7 @@ public class Groupmessage extends Module {
     );
 
     public Groupmessage() {
-        super(HIGTools.MAIN, "ClanMessage", "Message other members of the Watchmen");
+        super(WMTools.MAIN, "ClanMessage", "Message other members of the Watchmen");
 
     }
 

@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.packets.PacketEvent;
 import meteordevelopment.meteorclient.events.render.Render3DEvent;
 import meteordevelopment.meteorclient.events.world.TickEvent;
@@ -87,7 +87,7 @@ public class OffhandManager extends Module {
     private boolean swapped;
 
     public OffhandManager() {
-        super(HIGTools.MAIN, "offhand-manager", "Automatically manages your offhand (optimized for highway work).");
+        super(WMTools.MAIN, "offhand-manager", "Automatically manages your offhand (optimized for highway work).");
     }
 
     @Override
@@ -118,7 +118,7 @@ public class OffhandManager extends Module {
 
         Modules modules = Modules.get();
         AutoTotem autoTotem = modules.get(AutoTotem.class);
-        if (Modules.get().get(ScaffoldHIG.class).hasWorked()) return;
+        if (Modules.get().get(ScaffoldWM.class).hasWorked()) return;
 
         // Switch back if swap key has been used
         if (mc.options.swapHandsKey.isPressed() && !swapped && mc.player.getOffHandStack().getItem() == currentItem.item) swapped = true;
@@ -186,7 +186,7 @@ public class OffhandManager extends Module {
     }
 
     private boolean shouldEat() {
-        return (mc.player.getHungerManager().getFoodLevel() <= hungerThreshold.get() || autoFireRes.get() && !mc.player.getActiveStatusEffects().containsKey(StatusEffects.FIRE_RESISTANCE)) && !Modules.get().get(ScaffoldHIG.class).hasWorked();
+        return (mc.player.getHungerManager().getFoodLevel() <= hungerThreshold.get() || autoFireRes.get() && !mc.player.getActiveStatusEffects().containsKey(StatusEffects.FIRE_RESISTANCE)) && !Modules.get().get(ScaffoldWM.class).hasWorked();
     }
 
     private void startEating() {

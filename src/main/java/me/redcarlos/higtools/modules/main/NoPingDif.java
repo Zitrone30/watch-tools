@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.entity.player.BreakBlockEvent;
 import meteordevelopment.meteorclient.events.game.GameLeftEvent;
 import meteordevelopment.meteorclient.events.world.TickEvent;
@@ -23,7 +23,7 @@ import java.util.ArrayDeque;
 
 public class NoPingDif extends Module {
     public NoPingDif() {
-        super(HIGTools.MAIN, "PingPlace", "Makes sure you don't make gaps in your highway, only use when you have a large ping.");
+        super(WMTools.MAIN, "PingPlace", "Makes sure you don't make gaps in your highway, only use when you have a large ping.");
     }
     private final SettingGroup GBSettings = settings.getDefaultGroup();
 

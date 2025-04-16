@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.settings.IntSetting;
 import meteordevelopment.meteorclient.settings.SettingGroup;
@@ -43,7 +43,7 @@ public class Pulse extends Module {
     private final List<Packet<?>> savedPackets = new ArrayList<>();
 
     public Pulse() {
-        super(HIGTools.MAIN, "Pulse Blink", "Blinks on and off at intervals.");
+        super(WMTools.MAIN, "Pulse Blink", "Blinks on and off at intervals.");
     }
 
     @EventHandler

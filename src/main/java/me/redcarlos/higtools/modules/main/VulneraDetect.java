@@ -1,7 +1,7 @@
-//package me.DNS.vmtools.modules.main;
+//package me.DNS.wmtools.modules.main;
 //
-//import me.DNS.vmtools.utils.CrystalAuraAccessor;
-//import me.DNS.higtools.WMTools;
+//import me.DNS.wmtools.utils.CrystalAuraAccessor;
+//import me.DNS.wmtools.WMTools;
 //import meteordevelopment.meteorclient.events.render.Render3DEvent;
 //import meteordevelopment.meteorclient.events.world.TickEvent;
 //import meteordevelopment.meteorclient.renderer.ShapeMode;
@@ -49,7 +49,7 @@
 //    );
 //
 //    public VulneraDetect() {
-//        super(HIGTools.MAIN, "Vulnatect", "Checks if the CA target is not burrowed, and isn't surrounded.");
+//        super(WMTools.MAIN, "Vulnatect", "Checks if the CA target is not burrowed, and isn't surrounded.");
 //    }
 //
 //    private boolean isTargetFucked = false;

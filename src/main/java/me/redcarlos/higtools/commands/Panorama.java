@@ -1,4 +1,4 @@
-package me.DNS.vmtools.commands;
+package me.DNS.wmtools.commands;
 
 import java.io.File;
 import java.nio.file.*;

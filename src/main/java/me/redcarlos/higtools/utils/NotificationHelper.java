@@ -4,7 +4,7 @@
  * Download Baritone here : https://github.com/cabaletta/baritonefile
  */
 
-package me.DNS.vmtools.utils;
+package me.DNS.wmtools.utils;
 
 import org.apache.commons.lang3.SystemUtils;
 
@@ -36,13 +36,13 @@ public class NotificationHelper {
                     SystemTray tray = SystemTray.getSystemTray();
                     Image image = Toolkit.getDefaultToolkit().createImage("resources/assets/higtools/chat/icon.png");
 
-                    trayIcon = new TrayIcon(image, "HIGTools");
+                    trayIcon = new TrayIcon(image, "WMTools");
                     trayIcon.setImageAutoSize(true);
-                    trayIcon.setToolTip("HIGTools");
+                    trayIcon.setToolTip("WMTools");
                     tray.add(trayIcon);
                 }
 
-                trayIcon.displayMessage("HIGTools", text, error ? TrayIcon.MessageType.ERROR : TrayIcon.MessageType.INFO);
+                trayIcon.displayMessage("WMTools", text, error ? TrayIcon.MessageType.ERROR : TrayIcon.MessageType.INFO);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -53,7 +53,7 @@ public class NotificationHelper {
 
     private static void mac(String text) {
         ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.command("osascript", "-e", "display notification \"" + text + "\" with title \"HIGTools\"");
+        processBuilder.command("osascript", "-e", "display notification \"" + text + "\" with title \"WMTools\"");
         try {
             processBuilder.start();
         } catch (IOException e) {
@@ -68,7 +68,7 @@ public class NotificationHelper {
      */
     private static void linux(String text) {
         ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.command("notify-send", "-a", "HIGTools", text);
+        processBuilder.command("notify-send", "-a", "WMTools", text);
         try {
             processBuilder.start();
         } catch (IOException e) {

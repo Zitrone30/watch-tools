@@ -1,7 +1,7 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import net.minecraft.block.*;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
@@ -23,7 +23,7 @@ import meteordevelopment.meteorclient.events.entity.player.PlayerMoveEvent;
  **/
 public class AutoDoors extends Module {
     public AutoDoors()  {
-        super(HIGTools.MAIN, "AutoDoors", "Automatically interact with doors.");
+        super(WMTools.MAIN, "AutoDoors", "Automatically interact with doors.");
     }
 
     public enum DoorModes {

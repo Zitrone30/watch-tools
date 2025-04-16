@@ -1,7 +1,7 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.events.world.TickEvent;
@@ -92,7 +92,7 @@ public class Stay_above extends Module {
     private int count = 0;
 
     public Stay_above() {
-        super(HIGTools.MAIN, "AboveY", "Keeps your Y level at a set height");
+        super(WMTools.MAIN, "AboveY", "Keeps your Y level at a set height");
     }
 
     @Override

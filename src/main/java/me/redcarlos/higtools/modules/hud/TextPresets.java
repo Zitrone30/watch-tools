@@ -1,11 +1,11 @@
-package me.DNS.vmtools.modules.hud;
+package me.DNS.wmtools.modules.hud;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.systems.hud.HudElementInfo;
 import meteordevelopment.meteorclient.systems.hud.elements.TextHud;
 
 public class TextPresets {
-    public static final HudElementInfo<TextHud> INFO = new HudElementInfo<>(HIGTools.HUD, "higtools-presets", "Displays text with Starscript.", TextPresets::create);
+    public static final HudElementInfo<TextHud> INFO = new HudElementInfo<>(WMTools.HUD, "higtools-presets", "Displays text with Starscript.", TextPresets::create);
 
     private static TextHud create() {
         return new TextHud(INFO);

@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.discordipc.DiscordIPC;
 import meteordevelopment.discordipc.RichPresence;
 import meteordevelopment.meteorclient.events.game.OpenScreenEvent;
@@ -110,7 +110,7 @@ public class DiscordRPC extends Module {
     }
 
     public DiscordRPC() {
-        super(HIGTools.MAIN, "discord-RPC", "Displays Watchmen (Additions) as an activity on discord.");
+        super(WMTools.MAIN, "discord-RPC", "Displays Watchmen (Additions) as an activity on discord.");
 
         runInMainMenu = true;
     }
@@ -138,7 +138,7 @@ public class DiscordRPC extends Module {
 
         rpc.setStart(System.currentTimeMillis() / 1000L);
 
-            String largeText = "Watchmen Additions " + HIGTools.VERSION;
+            String largeText = "Watchmen Additions " + WMTools.VERSION;
         rpc.setLargeImage("watchmen", largeText);
 
         recompileLine1();
@@ -231,7 +231,7 @@ public class DiscordRPC extends Module {
             } else line2Ticks++;
         } else {
             if (!lastWasInMainMenu) {
-                rpc.setDetails("Watchmen Additions " + HIGTools.VERSION);
+                rpc.setDetails("Watchmen Additions " + WMTools.VERSION);
 
                 if (mc.currentScreen instanceof TitleScreen) rpc.setState("In main menu");
                 else if (mc.currentScreen instanceof SelectWorldScreen) rpc.setState("Selecting world");

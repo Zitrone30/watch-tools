@@ -1,4 +1,4 @@
-package me.DNS.vmtools.modules.highwayborers;
+package me.DNS.wmtools.modules.highwayborers;
 
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.orbit.EventHandler;

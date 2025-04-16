@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.events.world.TickEvent;
@@ -83,7 +83,7 @@ public class AutoWalkP extends Module {
     );
 
     public AutoWalkP() {
-        super(HIGTools.MAIN, "Advanced Auto Walk", "Auto Walk but you can press 2 keys with delay.");
+        super(WMTools.MAIN, "Advanced Auto Walk", "Auto Walk but you can press 2 keys with delay.");
     }
 
     private int timer;

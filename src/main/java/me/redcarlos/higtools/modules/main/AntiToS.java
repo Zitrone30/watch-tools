@@ -1,4 +1,4 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
 import java.io.File;
 import java.util.HashSet;
@@ -6,10 +6,10 @@ import java.nio.file.Files;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
-import me.DNS.vmtools.utils.StardustUtil;
+import me.DNS.wmtools.utils.StardustUtil;
 import net.minecraft.block.entity.SignText;
 import net.fabricmc.loader.api.FabricLoader;
 import meteordevelopment.meteorclient.settings.*;
@@ -19,7 +19,7 @@ import meteordevelopment.meteorclient.systems.modules.Module;
  * @author Tas [0xTas] <root@0xTas.dev>
  **/
 public class AntiToS extends Module {
-    public AntiToS() { super(HIGTools.MAIN, "Censor", "Censor player-generated text sources according to a content blacklist."); }
+    public AntiToS() { super(WMTools.MAIN, "Censor", "Censor player-generated text sources according to a content blacklist."); }
 
     private final String BLACKLIST_FILE = "meteor-client/anti-tos.txt";
 

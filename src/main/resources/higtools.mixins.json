@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "me.DNS.vmtools.mixins",
+  "package": "me.DNS.wmtools.mixins",
   "compatibilityLevel": "JAVA_21",
   "injectors": {
     "defaultRequire": 1

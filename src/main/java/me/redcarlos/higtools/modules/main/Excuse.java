@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.game.SendMessageEvent;
 import meteordevelopment.meteorclient.settings.Setting;
 import meteordevelopment.meteorclient.settings.SettingGroup;
@@ -8,7 +8,7 @@ import meteordevelopment.meteorclient.settings.StringListSetting;
 import meteordevelopment.meteorclient.settings.StringSetting;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.utils.player.FindItemResult;
@@ -18,7 +18,7 @@ import meteordevelopment.orbit.EventHandler;
 import net.minecraft.item.Items;
 import net.minecraft.network.packet.s2c.common.DisconnectS2CPacket;
 import net.minecraft.text.Text;
-import me.DNS.vmtools.utils.KickEvent;
+import me.DNS.wmtools.utils.KickEvent;
 
 import java.util.List;
 import java.util.Random;
@@ -57,7 +57,7 @@ public class Excuse extends Module {
     );
 
     public Excuse() {
-        super(HIGTools.MAIN, "ExcuseLog", "Log out of the server with an excuse.");
+        super(WMTools.MAIN, "ExcuseLog", "Log out of the server with an excuse.");
     }
 
     @EventHandler

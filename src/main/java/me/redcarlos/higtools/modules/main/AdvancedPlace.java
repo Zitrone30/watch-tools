@@ -1,7 +1,7 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.render.Render3DEvent;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.renderer.ShapeMode;
@@ -72,7 +72,7 @@ public class AdvancedPlace extends Module {
     private HitResult hitResult;
 
     public AdvancedPlace() {
-        super(HIGTools.MAIN, "AdvancedPlace", "Helps you place stuff where you normally couldn't");
+        super(WMTools.MAIN, "AdvancedPlace", "Helps you place stuff where you normally couldn't");
     }
 
     @EventHandler

@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.game.GameLeftEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
@@ -53,7 +53,7 @@ public class RangeCMD extends Module {
     );
 
     public RangeCMD() {
-        super(HIGTools.MAIN, "RangeCMD", "Sends a message when players come in render distance.");
+        super(WMTools.MAIN, "RangeCMD", "Sends a message when players come in render distance.");
     }
     String regex = "[A-Za-z0-9_]+";
     @EventHandler

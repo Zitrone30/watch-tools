@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.render.Render3DEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
@@ -97,7 +97,7 @@ public class AxisViewer extends Module {
     );
 
     public AxisViewer() {
-        super(HIGTools.MAIN, "axis-viewer", "Displays world axes.");
+        super(WMTools.MAIN, "axis-viewer", "Displays world axes.");
     }
 
     @EventHandler

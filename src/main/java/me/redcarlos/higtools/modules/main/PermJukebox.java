@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.packets.PacketEvent;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
@@ -10,7 +10,7 @@ import net.minecraft.network.packet.c2s.play.PlayerInteractBlockC2SPacket;
 
 public class PermJukebox extends Module {
     public PermJukebox() {
-        super(HIGTools.MAIN, "JukeSpam", "Allows you to play multiple music discs at the same time. Useful for trolling");
+        super(WMTools.MAIN, "JukeSpam", "Allows you to play multiple music discs at the same time. Useful for trolling");
     }
 
     @EventHandler

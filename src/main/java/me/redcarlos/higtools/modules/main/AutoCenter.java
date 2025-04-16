@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.DoubleSetting;
 import meteordevelopment.meteorclient.settings.Setting;
@@ -8,7 +8,7 @@ import meteordevelopment.meteorclient.settings.SettingGroup;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
 
-import static me.DNS.vmtools.utils.HIGUtils.getHighway;
+import static me.DNS.wmtools.utils.WMUtils.getHighway;
 
 public class AutoCenter extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
@@ -35,7 +35,7 @@ public class AutoCenter extends Module {
     private int highway = -1;
 
     public AutoCenter() {
-        super(HIGTools.MAIN, "auto-center", "Automatically centers the player so that HighwayBorers mine on axis.");
+        super(WMTools.MAIN, "auto-center", "Automatically centers the player so that HighwayBorers mine on axis.");
     }
 
     @Override

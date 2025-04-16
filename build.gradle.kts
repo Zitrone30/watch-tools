@@ -54,5 +54,5 @@ tasks {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/higtools.accesswidener")
+    accessWidenerPath = file("src/main/resources/wmtools.accesswidener")
 }

@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.highwayborers;
+package me.DNS.wmtools.modules.highwayborers;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.EnumSetting;
 import meteordevelopment.meteorclient.settings.IntSetting;
@@ -14,7 +14,7 @@ import net.minecraft.util.math.Direction;
 
 import java.util.stream.IntStream;
 
-import static me.DNS.vmtools.utils.HIGUtils.*;
+import static me.DNS.wmtools.utils.WMUtils.*;
 
 public abstract class BorerModule extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
@@ -45,7 +45,7 @@ public abstract class BorerModule extends Module {
     protected BlockPos playerPos = BlockPos.ORIGIN; // Floored block position of player
 
     protected BorerModule(String name, String description, int extForwards, int extBackwards, int xOffset, int zOffset) {
-        super(HIGTools.BORERS, name, description);
+        super(WMTools.BORERS, name, description);
 
         extForward = sgGeneral.add(new IntSetting.Builder()
             .name("ext-forward")

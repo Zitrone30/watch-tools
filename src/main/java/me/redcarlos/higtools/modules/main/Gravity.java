@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.settings.DoubleSetting;
 import meteordevelopment.meteorclient.settings.SettingGroup;
@@ -53,7 +53,7 @@ public class Gravity extends Module {
     );
 
     public Gravity() {
-        super(HIGTools.MAIN, "Forces", "Modify the forces put upon the player.");
+        super(WMTools.MAIN, "Forces", "Modify the forces put upon the player.");
     }
 
     @EventHandler

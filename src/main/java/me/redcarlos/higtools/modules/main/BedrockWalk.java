@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.mixininterface.IVec3d;
 import meteordevelopment.meteorclient.settings.*;
@@ -117,7 +117,7 @@ public class BedrockWalk extends Module {
 
 
     public BedrockWalk() {
-        super(HIGTools.MAIN, "Bedrock Walk", "Makes moving on bedrock easier.");
+        super(WMTools.MAIN, "Bedrock Walk", "Makes moving on bedrock easier.");
     }
 
     @Override

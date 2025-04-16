@@ -1,8 +1,8 @@
-package me.DNS.vmtools.mixins;
+package me.DNS.wmtools.mixins;
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import me.DNS.vmtools.modules.highwayborers.*;
-import me.DNS.vmtools.modules.main.*;
+import me.DNS.wmtools.modules.highwayborers.*;
+import me.DNS.wmtools.modules.main.*;
 import meteordevelopment.meteorclient.commands.Command;
 import meteordevelopment.meteorclient.commands.commands.ToggleCommand;
 import meteordevelopment.meteorclient.systems.modules.Module;
@@ -39,15 +39,15 @@ public abstract class ToggleCommandMixin extends Command {
     private final Class<? extends Module>[] otherModules = new Class[]{
         AutoCenter.class,
         AutoLog.class,
-        AutoWalkHIG.class,
+        AutoWalkWM.class,
         FreeLook.class,
-        HighwayBuilderHIG.class,
+        HighwayBuilderWM.class,
         HighwayTools.class,
         HotbarManager.class,
-        LiquidFillerHIG.class,
+        LiquidFillerWM.class,
         OffhandManager.class,
         SafeWalk.class,
-        ScaffoldHIG.class,
+        ScaffoldWM.class,
     };
 
     @Inject(method = "build", at = @At("HEAD"))

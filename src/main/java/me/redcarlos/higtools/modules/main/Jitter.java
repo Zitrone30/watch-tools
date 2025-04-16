@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.settings.SettingGroup;
 import meteordevelopment.meteorclient.settings.DoubleSetting;
@@ -71,7 +71,7 @@ public class Jitter extends Module {
     private double currentZ = 0;
 
     public Jitter() {
-        super(HIGTools.MAIN, "Jitter", "Applies random jitter movement to the player.");
+        super(WMTools.MAIN, "Jitter", "Applies random jitter movement to the player.");
     }
 
     private double toggleDirection(double current, double amount) {

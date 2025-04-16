@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class BoomView extends Module {
     public BoomView(){
-        super(HIGTools.MAIN, "KaBoomGuard", "Avoid explosions!");
+        super(WMTools.MAIN, "KaBoomGuard", "Avoid explosions!");
     }
 
     private final SettingGroup sgGeneral = this.settings.getDefaultGroup();

@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
@@ -64,7 +64,7 @@ public class AfkLogout extends Module {
     );
 
     public AfkLogout() {
-        super(HIGTools.MAIN, "afk-logout", "Logs out when you reach certain coords. Useful for afk travelling.");
+        super(WMTools.MAIN, "afk-logout", "Logs out when you reach certain coords. Useful for afk travelling.");
     }
 
     @EventHandler

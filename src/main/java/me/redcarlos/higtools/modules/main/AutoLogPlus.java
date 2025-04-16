@@ -1,7 +1,7 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.friends.Friends;
@@ -142,7 +142,7 @@ public class AutoLogPlus extends Module {
     );
 
     public AutoLogPlus() {
-        super(HIGTools.MAIN, "AutoLogout", "Disconnects you when a specific condition is reached.");
+        super(WMTools.MAIN, "AutoLogout", "Disconnects you when a specific condition is reached.");
     }
 
     @EventHandler

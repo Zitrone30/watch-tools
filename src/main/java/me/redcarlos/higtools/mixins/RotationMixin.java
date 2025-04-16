@@ -1,4 +1,4 @@
-package me.DNS.vmtools.mixins;
+package me.DNS.wmtools.mixins;
 
 import meteordevelopment.meteorclient.events.game.GameLeftEvent;
 import meteordevelopment.meteorclient.events.game.OpenScreenEvent;

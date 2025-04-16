@@ -1,10 +1,10 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
 import java.util.Iterator;
 import java.util.Optional;
 
-import me.DNS.vmtools.utils.GenericNamesStuff;
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.utils.GenericNamesStuff;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.MeteorClient;
 import meteordevelopment.meteorclient.events.packets.PacketEvent;
 import meteordevelopment.meteorclient.settings.BoolSetting;
@@ -34,7 +34,7 @@ public class StreamerMode extends Module {
    public final Setting<Boolean> useRandomIpOffset;
 
    public StreamerMode() {
-      super(HIGTools.MAIN, "Streamer mode", "Hides sensitive info from stream viewers");
+      super(WMTools.MAIN, "Streamer mode", "Hides sensitive info from stream viewers");
       this.sgGeneral = this.settings.getDefaultGroup();
       this.hideServerInfo = this.sgGeneral.add((new BoolSetting.Builder()).name("hide server info").defaultValue(true).build());
       this.hideAccount = this.sgGeneral.add((new BoolSetting.Builder()).name("hide Logged in account text").defaultValue(true).build());

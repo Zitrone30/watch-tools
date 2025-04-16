@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.settings.BoolSetting;
 import meteordevelopment.meteorclient.settings.DoubleSetting;
 import meteordevelopment.meteorclient.settings.SettingGroup;
@@ -18,7 +18,7 @@ public class DoneLogout extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
     public DoneLogout() {
-        super(HIGTools.MAIN, "HighwayCheck", "Logs out if there's another highway in front of the player.");
+        super(WMTools.MAIN, "HighwayCheck", "Logs out if there's another highway in front of the player.");
     }
 
 

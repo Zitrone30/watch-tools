@@ -1,7 +1,7 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
@@ -16,7 +16,7 @@ public class HitboxDesync extends Module {
     private static final double MAGIC_OFFSET = .200009968835369999878673424677777777777761;
 
     public HitboxDesync() {
-        super(HIGTools.MAIN, "hitbox-desync", "thanks mioclient devs!");
+        super(WMTools.MAIN, "hitbox-desync", "thanks mioclient devs!");
     }
 
     @EventHandler

@@ -1,6 +1,6 @@
-package me.DNS.vmtools.mixins;
+package me.DNS.wmtools.mixins;
 
-import me.DNS.vmtools.system.HIGSystem;
+import me.DNS.wmtools.system.WMSystem;
 import meteordevelopment.meteorclient.systems.System;
 import meteordevelopment.meteorclient.systems.Systems;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,7 +18,7 @@ public abstract class SystemsMixin {
 
     @Inject(method = "init", at = @At("HEAD"))
     private static void injectSystem(CallbackInfo ci) {
-        System<?> higSystem = add(new HIGSystem());
+        System<?> higSystem = add(new WMSystem());
         higSystem.init();
         higSystem.load();
     }

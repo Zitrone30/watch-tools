@@ -1,4 +1,4 @@
-package me.DNS.vmtools.utils;
+package me.DNS.wmtools.utils;
 
 import java.util.Optional;
 import net.minecraft.item.ItemStack;

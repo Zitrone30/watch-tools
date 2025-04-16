@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "name": "Watchmen Additions",
   "id": "higtools",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Meteor client additions for use by The Watchmen.",
   "authors": [
     "RocoPlays & DNS"
@@ -23,7 +23,7 @@
   "mixins": [
     "higtools.mixins.json"
   ],
-  "accessWidener": "higtools.accesswidener",
+  "accessWidener": "wmtools.accesswidener",
   "custom": {
     "meteor-client:color": "145,61,226",
     "modmenu": {

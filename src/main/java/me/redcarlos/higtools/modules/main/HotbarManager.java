@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.gui.GuiTheme;
 import meteordevelopment.meteorclient.gui.widgets.WWidget;
@@ -55,7 +55,7 @@ public class HotbarManager extends Module {
     private double ticksLeft;
 
     public HotbarManager() {
-        super(HIGTools.MAIN, "hotbar-manager", "Automatically move items to your hotbar.");
+        super(WMTools.MAIN, "hotbar-manager", "Automatically move items to your hotbar.");
 
         final SettingGroup sgHotbar = settings.createGroup("Hotbar");
 

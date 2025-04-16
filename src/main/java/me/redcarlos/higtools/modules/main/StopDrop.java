@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.entity.DropItemsEvent;
 import meteordevelopment.meteorclient.settings.BoolSetting;
 import meteordevelopment.meteorclient.settings.ItemListSetting;
@@ -36,7 +36,7 @@ public class StopDrop extends Module {
     );
 
     public StopDrop() {
-        super(HIGTools.MAIN, "StopDrop", "Stops you from dropping certain items.");
+        super(WMTools.MAIN, "StopDrop", "Stops you from dropping certain items.");
     }
 
     @EventHandler

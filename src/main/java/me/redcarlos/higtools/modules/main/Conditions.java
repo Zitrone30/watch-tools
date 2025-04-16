@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.game.GameLeftEvent;
 import meteordevelopment.meteorclient.events.packets.PacketEvent;
 import meteordevelopment.meteorclient.events.world.TickEvent;
@@ -116,7 +116,7 @@ public class Conditions extends Module {
     );
 
     public Conditions() {
-        super(HIGTools.MAIN, "Conditions", "toggles modules based on conditions");
+        super(WMTools.MAIN, "Conditions", "toggles modules based on conditions");
     }
 
     //death toggle and damage toggle

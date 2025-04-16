@@ -1,4 +1,4 @@
-package me.DNS.vmtools.utils;
+package me.DNS.wmtools.utils;
 
 import jdk.jfr.Event;
 
