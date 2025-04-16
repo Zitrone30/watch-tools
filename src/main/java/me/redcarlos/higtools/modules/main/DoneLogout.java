@@ -38,8 +38,15 @@ public class DoneLogout extends Module {
 
         for (int i = 1; i <= range.get(); i++) {
             BlockPos checkPos = mc.player.getBlockPos().offset(facing, i).down();
+
             if (mc.world.getBlockState(checkPos).isOf(Blocks.OBSIDIAN)) {
+                BlockPos logoutPos = mc.player.getBlockPos();
+                String coords = String.format("Logged at X: %d, Y: %d, Z: %d",
+                        logoutPos.getX(), logoutPos.getY(), logoutPos.getZ());
+
                 info("Obsidian detected " + i + " blocks ahead. Logging out.");
+                info(coords);
+
 
                 mc.world.disconnect();
                 mc.disconnect(); // Cleans up network connection
