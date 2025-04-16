@@ -1,4 +1,4 @@
-package me.redcarlos.higtools.utils;
+package me.DNS.wmtools.utils;
 
 public enum YDirection {
     NORTH(-1),

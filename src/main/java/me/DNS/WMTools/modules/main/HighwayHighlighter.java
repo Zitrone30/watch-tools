@@ -1,6 +1,6 @@
-package me.redcarlos.higtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.redcarlos.higtools.HIGTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.renderer.ShapeMode;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.events.render.Render3DEvent;
@@ -9,9 +9,9 @@ import meteordevelopment.meteorclient.utils.render.color.Color;
 import meteordevelopment.meteorclient.utils.render.color.SettingColor;
 import meteordevelopment.orbit.EventHandler;
 import net.minecraft.util.math.Vec3d;
-import me.redcarlos.higtools.utils.HighwayType;
-import me.redcarlos.higtools.utils.XDirection;
-import me.redcarlos.higtools.utils.YDirection;
+import me.DNS.wmtools.utils.HighwayType;
+import me.DNS.wmtools.utils.XDirection;
+import me.DNS.wmtools.utils.YDirection;
 
 public class HighwayHighlighter extends Module {
     private final SettingGroup sgGeneral = this.settings.getDefaultGroup();
@@ -93,7 +93,7 @@ public class HighwayHighlighter extends Module {
     );
 
     public HighwayHighlighter() {
-        super(HIGTools.MAIN, "highway-highlighter", "Highlights a selected highway");
+        super(WMTools.MAIN, "highway-highlighter", "Highlights a selected highway");
     }
 
     @EventHandler
