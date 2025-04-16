@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "name": "Watchmen Additions",
-  "id": "higtools",
+  "id": "wmtools",
   "version": "1.2.0",
   "description": "Meteor client additions for use by The Watchmen.",
   "authors": [
@@ -13,15 +13,15 @@
     "discord": "https://discord.gg/a4jkKGJNdJ"
   },
   "license": "GPL-3.0",
-  "icon": "assets/higtools/icon.png",
+  "icon": "assets/wmtools/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "me.DNS.higtools.WMTools"
+      "me.DNS.wmtools.WMTools"
     ]
   },
   "mixins": [
-    "higtools.mixins.json"
+    "wmtools.mixins.json"
   ],
   "accessWidener": "wmtools.accesswidener",
   "custom": {
