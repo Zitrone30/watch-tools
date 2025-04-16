@@ -1,7 +1,7 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
-import me.DNS.vmtools.utils.ListMode;
+import me.DNS.wmtools.WMTools;
+import me.DNS.wmtools.utils.ListMode;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class LiquidFillerHIG extends Module {
+public class LiquidFillerWM extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
     private final SettingGroup sgBlocks = settings.createGroup("Blocks");
 
@@ -109,8 +109,8 @@ public class LiquidFillerHIG extends Module {
 
     private int timer;
 
-    public LiquidFillerHIG() {
-        super(HIGTools.MAIN, "liquid-filler-HIG", "Places blocks inside of liquid source blocks within range of you.");
+    public LiquidFillerWM() {
+        super(WMTools.MAIN, "liquid-fille-WM", "Places blocks inside of liquid source blocks within range of you.");
     }
 
     @Override

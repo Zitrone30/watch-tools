@@ -3,10 +3,10 @@
  * Copyright (c) Meteor Development.
  */
 
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
-import me.DNS.vmtools.utils.HIGUtils;
+import me.DNS.wmtools.WMTools;
+import me.DNS.wmtools.utils.WMUtils;
 import meteordevelopment.meteorclient.events.game.GameLeftEvent;
 import meteordevelopment.meteorclient.events.packets.PacketEvent;
 import meteordevelopment.meteorclient.events.render.Render2DEvent;
@@ -75,7 +75,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 @SuppressWarnings("ConstantConditions")
-public class HighwayBuilderHIG extends Module {
+public class HighwayBuilderWM extends Module {
     public enum Floor {
         Replace,
         PlaceMissing
@@ -486,8 +486,8 @@ public class HighwayBuilderHIG extends Module {
     private final MBlockPos posRender2 = new MBlockPos();
     private final MBlockPos posRender3 = new MBlockPos();
 
-    public HighwayBuilderHIG() {
-        super(HIGTools.MAIN, "AutoHighWay", "Automatically builds highways.");
+    public HighwayBuilderWM() {
+        super(WMTools.MAIN, "AutoHighWay", "Automatically builds highways.");
         runInMainMenu = true;
     }
 
@@ -743,7 +743,7 @@ public class HighwayBuilderHIG extends Module {
 
     private boolean canPlace(MBlockPos pos, boolean liquids) {
         if (pos.getBlockPos().getSquaredDistance(mc.player.getEyePos()) > placeRange.get() * placeRange.get()) return false;
-        return liquids ? !pos.getState().getFluidState().isEmpty() : HIGUtils.canPlaceHIG(pos.getBlockPos());
+        return liquids ? !pos.getState().getFluidState().isEmpty() : WMUtils.canPlaceWM(pos.getBlockPos());
     }
 
     private void disconnect(String message, Object... args) {
@@ -798,14 +798,14 @@ public class HighwayBuilderHIG extends Module {
     private enum State {
         Center {
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 if (b.mc.player.getPos().isInRange(Vec3d.ofBottomCenter(b.mc.player.getBlockPos()), 0.1)) {
                     stop(b);
                 }
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 // There is probably a much better way to do this
                 double x = Math.abs(b.mc.player.getX() - (int) b.mc.player.getX()) - 0.5;
                 double z = Math.abs(b.mc.player.getZ() - (int) b.mc.player.getZ()) - 0.5;
@@ -845,7 +845,7 @@ public class HighwayBuilderHIG extends Module {
                 }
             }
 
-            private void stop(HighwayBuilderHIG b) {
+            private void stop(HighwayBuilderWM b) {
                 b.input.stop();
                 b.mc.player.setVelocity(0, 0, 0);
                 b.mc.player.setPosition((int) b.mc.player.getX() + (b.mc.player.getX() < 0 ? -0.5 : 0.5), b.mc.player.getY(), (int) b.mc.player.getZ() + (b.mc.player.getZ() < 0 ? -0.5 : 0.5));
@@ -855,7 +855,7 @@ public class HighwayBuilderHIG extends Module {
 
         Forward {
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 checkTasks(b);
                 b.mc.player.setPitch(20); // Prevent accidentally looking at endermen's eyes
 
@@ -863,14 +863,14 @@ public class HighwayBuilderHIG extends Module {
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 checkTasks(b);
                 b.mc.player.setPitch(20); // Prevent accidentally looking at endermen's eyes
 
                 if (b.state == Forward) b.input.forward(true); // Move
             }
 
-            private void checkTasks(HighwayBuilderHIG b) {
+            private void checkTasks(HighwayBuilderWM b) {
                 if (b.destroyCrystalTraps.get() && isCrystalTrap(b)) b.setState(DefuseCrystalTraps); // Destroy crystal traps
                 else if (needsToPlace(b, b.blockPosProvider.getLiquids(), true)) b.setState(FillLiquids); // Fill Liquids
                 else if (needsToMine(b, b.blockPosProvider.getFront(), true)) b.setState(MineFront); // Mine Front
@@ -884,7 +884,7 @@ public class HighwayBuilderHIG extends Module {
                 else if (needsToPlace(b, b.blockPosProvider.getFloor(), false)) b.setState(PlaceFloor); // Place Floor
             }
 
-            private boolean needsToMine(HighwayBuilderHIG b, HighwayBuilderHIG.MBPIterator it, boolean mineBlocksToPlace) {
+            private boolean needsToMine(HighwayBuilderWM b, HighwayBuilderWM.MBPIterator it, boolean mineBlocksToPlace) {
                 for (MBlockPos pos : it) {
                     if (b.canMine(pos, mineBlocksToPlace)) return true;
                 }
@@ -892,7 +892,7 @@ public class HighwayBuilderHIG extends Module {
                 return false;
             }
 
-            private boolean needsToPlace(HighwayBuilderHIG b, HighwayBuilderHIG.MBPIterator it, boolean liquids) {
+            private boolean needsToPlace(HighwayBuilderWM b, HighwayBuilderWM.MBPIterator it, boolean liquids) {
                 for (MBlockPos pos : it) {
                     if (b.canPlace(pos, liquids)) return true;
                 }
@@ -900,7 +900,7 @@ public class HighwayBuilderHIG extends Module {
                 return false;
             }
 
-            private boolean isCrystalTrap(HighwayBuilderHIG b) {
+            private boolean isCrystalTrap(HighwayBuilderWM b) {
                 for (Entity entity : b.mc.world.getEntities()) {
                     if (!(entity instanceof EndCrystalEntity endCrystal)) continue;
                     if (PlayerUtils.isWithin(endCrystal, 12) || !PlayerUtils.isWithin(endCrystal, 24)) continue;
@@ -924,12 +924,12 @@ public class HighwayBuilderHIG extends Module {
             private int timer = 30;
 
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 startPos = BlockPos.ofFloored(b.start);
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 Vec3d vec = b.mc.player.getPos().add(b.mc.player.getVelocity()).add(0, -0.75, 0);
                 pos.set(b.mc.player.getBlockX(), vec.y, b.mc.player.getBlockZ());
 
@@ -973,7 +973,7 @@ public class HighwayBuilderHIG extends Module {
                 }
             }
 
-            private int findAcceptablePlacementBlock(HighwayBuilderHIG b) {
+            private int findAcceptablePlacementBlock(HighwayBuilderWM b) {
                 // still should prioritise trash
                 int slot = findAndMoveToHotbar(b, itemStack -> {
                     if (!(itemStack.getItem() instanceof BlockItem)) return false;
@@ -1000,7 +1000,7 @@ public class HighwayBuilderHIG extends Module {
 
         FillLiquids {
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 int slot = findBlocksToPlacePrioritizeTrash(b);
                 if (slot == -1) return;
 
@@ -1010,55 +1010,55 @@ public class HighwayBuilderHIG extends Module {
 
         MineFront {
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 mine(b, b.blockPosProvider.getFront(), true, Forward, this);
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 mine(b, b.blockPosProvider.getFront(), true, Forward, this);
             }
         },
 
         MineFloor {
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 mine(b, b.blockPosProvider.getFloor(), false, Forward, this);
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 mine(b, b.blockPosProvider.getFloor(), false, Forward, this);
             }
         },
 
         MineRailings {
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 mine(b, b.blockPosProvider.getRailings(0), false, Forward, this);
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 mine(b, b.blockPosProvider.getRailings(0), false, Forward, this);
             }
         },
 
         MineAboveRailings {
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 mine(b, b.blockPosProvider.getRailings(1), true, Forward, this);
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 mine(b, b.blockPosProvider.getRailings(1), true, Forward, this);
             }
         },
 
         PlaceCornerBlock {
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 int slot = findBlocksToPlacePrioritizeTrash(b);
                 if (slot == -1) return;
 
@@ -1066,7 +1066,7 @@ public class HighwayBuilderHIG extends Module {
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 int slot = findBlocksToPlacePrioritizeTrash(b);
                 if (slot == -1) return;
 
@@ -1076,7 +1076,7 @@ public class HighwayBuilderHIG extends Module {
 
         PlaceRailings {
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 int slot = findBlocksToPlace(b);
                 if (slot == -1) return;
 
@@ -1084,7 +1084,7 @@ public class HighwayBuilderHIG extends Module {
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 int slot = findBlocksToPlace(b);
                 if (slot == -1) return;
 
@@ -1094,7 +1094,7 @@ public class HighwayBuilderHIG extends Module {
 
         PlaceFloor {
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 int slot = findBlocksToPlace(b);
                 if (slot == -1) return;
 
@@ -1102,7 +1102,7 @@ public class HighwayBuilderHIG extends Module {
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 int slot = findBlocksToPlace(b);
                 if (slot == -1) return;
 
@@ -1117,7 +1117,7 @@ public class HighwayBuilderHIG extends Module {
             private static final ItemStack[] ITEMS = new ItemStack[27];
 
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 int biggestCount = 0;
 
                 for (int i = 0; i < b.mc.player.getInventory().main.size(); i++) {
@@ -1138,7 +1138,7 @@ public class HighwayBuilderHIG extends Module {
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 if (timerEnabled) {
                     if (timer > 0) timer--;
                     else b.setState(b.lastState);
@@ -1203,7 +1203,7 @@ public class HighwayBuilderHIG extends Module {
 
         PlaceEChestBlockade {
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 int slot = findBlocksToPlacePrioritizeTrash(b);
                 if (slot == -1) return;
 
@@ -1213,7 +1213,7 @@ public class HighwayBuilderHIG extends Module {
 
         MineEChestBlockade {
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 mine(b, b.blockPosProvider.getBlockade(true, b.blockadeType.get()), true, Center, Forward);
             }
         },
@@ -1226,7 +1226,7 @@ public class HighwayBuilderHIG extends Module {
             private int stopTimer, moveTimer, rebreakTimer, timeout;
 
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 if (b.lastState != Center && b.lastState != ThrowOutTrash && b.lastState != PlaceEChestBlockade) {
                     b.setState(Center);
                     return;
@@ -1260,7 +1260,7 @@ public class HighwayBuilderHIG extends Module {
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 if (stopTimerEnabled) {
                     if (stopTimer > 0) stopTimer--;
                     else b.setState(MineEChestBlockade);
@@ -1396,7 +1396,7 @@ public class HighwayBuilderHIG extends Module {
             private int slot = -1;
 
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 slot = -1; // :ptsd:
 
                 // set the predicate to test for shulker boxes
@@ -1497,7 +1497,7 @@ public class HighwayBuilderHIG extends Module {
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 // this should only tick if there's a valid slot we can restock from
                 if (slot == -1) {
                     b.error("Invalid restocking action.");
@@ -1637,7 +1637,7 @@ public class HighwayBuilderHIG extends Module {
                 }
             }
 
-            private boolean restockItems(HighwayBuilderHIG b, Inventory inv) {
+            private boolean restockItems(HighwayBuilderWM b, Inventory inv) {
                 if (b.restockTask.materials) {
                     // take raw material
                     if (grabFromInventory(inv, itemStack -> itemStack.getItem() instanceof BlockItem bi && b.blocksToPlace.get().contains(bi.getBlock()))) return true;
@@ -1669,7 +1669,7 @@ public class HighwayBuilderHIG extends Module {
                 return false;
             }
 
-            private void setShulkerPredicate(HighwayBuilderHIG b) {
+            private void setShulkerPredicate(HighwayBuilderWM b) {
                 shulkerPredicate = itemStack -> {
                     if (!Utils.isShulker(itemStack.getItem())) return false;
                     Utils.getItemsInContainerItem(itemStack, ITEMS);
@@ -1686,7 +1686,7 @@ public class HighwayBuilderHIG extends Module {
                 };
             }
 
-            private void handleContainerBlock(HighwayBuilderHIG b, BlockPos bp) {
+            private void handleContainerBlock(HighwayBuilderWM b, BlockPos bp) {
                 if (breakContainer) {
                     BlockState state = b.mc.world.getBlockState(bp);
 
@@ -1707,7 +1707,7 @@ public class HighwayBuilderHIG extends Module {
                 }
             }
 
-            private int countSlots(HighwayBuilderHIG b, Predicate<ItemStack> predicate) {
+            private int countSlots(HighwayBuilderWM b, Predicate<ItemStack> predicate) {
                 int count = 0;
                 for (int i = 0; i < b.mc.player.getInventory().main.size(); i++) {
                     ItemStack stack = b.mc.player.getInventory().getStack(i);
@@ -1720,7 +1720,7 @@ public class HighwayBuilderHIG extends Module {
 
         PlaceShulkerBlockade {
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 int slot = findBlocksToPlacePrioritizeTrash(b);
                 if (slot == -1) return;
 
@@ -1733,7 +1733,7 @@ public class HighwayBuilderHIG extends Module {
             private int stopTimer;
 
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 stopTimerEnabled = false;
                 if (b.lastState == this) {
                     stopTimerEnabled = true;
@@ -1742,7 +1742,7 @@ public class HighwayBuilderHIG extends Module {
             }
 
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 if (!stopTimerEnabled) {
                     // mining b.blockadeType instead of BlockadeType.Shulker is the fastest fix to the module leaving
                     // some blocks behind if you start a pickaxe restock task while mining echests
@@ -1762,7 +1762,7 @@ public class HighwayBuilderHIG extends Module {
             private EndCrystalEntity target;
 
             @Override
-            protected void start(HighwayBuilderHIG b) {
+            protected void start(HighwayBuilderWM b) {
                 if (!InvUtils.find(Items.BOW).found() || (!InvUtils.find(itemStack -> itemStack.getItem() instanceof ArrowItem).found() && !b.mc.player.getAbilities().creativeMode)) {
                     b.destroyCrystalTraps.set(false);
                     b.warning("No bow found to destroy crystal traps with. Toggling the setting off.");
@@ -1784,7 +1784,7 @@ public class HighwayBuilderHIG extends Module {
              * @see meteordevelopment.meteorclient.mixin.MinecraftClientMixin#wrapStopUsing(ClientPlayerInteractionManager, PlayerEntity)
              */
             @Override
-            protected void tick(HighwayBuilderHIG b) {
+            protected void tick(HighwayBuilderWM b) {
                 if (cooldown > 0) {
                     cooldown--;
                     return;
@@ -1857,7 +1857,7 @@ public class HighwayBuilderHIG extends Module {
                 }
             }
 
-            private float aim(HighwayBuilderHIG b, Entity target) {
+            private float aim(HighwayBuilderWM b, Entity target) {
                 // Velocity based on bow charge.
                 float velocity = BowItem.getPullProgress(b.mc.player.getItemUseTime());
 
@@ -1878,11 +1878,11 @@ public class HighwayBuilderHIG extends Module {
             }
         };
 
-        protected void start(HighwayBuilderHIG b) {}
+        protected void start(HighwayBuilderWM b) {}
 
-        protected abstract void tick(HighwayBuilderHIG b);
+        protected abstract void tick(HighwayBuilderWM b);
 
-        protected void mine(HighwayBuilderHIG b, HighwayBuilderHIG.MBPIterator it, boolean mineBlocksToPlace, HighwayBuilderHIG.State nextState, HighwayBuilderHIG.State lastState) {
+        protected void mine(HighwayBuilderWM b, HighwayBuilderWM.MBPIterator it, boolean mineBlocksToPlace, HighwayBuilderWM.State nextState, HighwayBuilderWM.State lastState) {
             boolean breaking = false;
             boolean finishedBreaking = false; // if you can multi break this lets you mine blocks between tasks in a single tick
 
@@ -1970,7 +1970,7 @@ public class HighwayBuilderHIG extends Module {
             }
         }
 
-        private void doubleMine(HighwayBuilderHIG b, ArrayDeque<BlockPos> blocks) {
+        private void doubleMine(HighwayBuilderWM b, ArrayDeque<BlockPos> blocks) {
             if (b.breakTimer > 0) return;
 
             if (b.normalMining == null) {
@@ -1995,7 +1995,7 @@ public class HighwayBuilderHIG extends Module {
             }
         }
 
-        protected void place(HighwayBuilderHIG b, MBPIterator it, int slot, State nextState) {
+        protected void place(HighwayBuilderWM b, MBPIterator it, int slot, State nextState) {
             boolean placed = false;
             boolean finishedPlacing = false;
 
@@ -2021,7 +2021,7 @@ public class HighwayBuilderHIG extends Module {
             if (finishedPlacing || !placed) b.setState(nextState);
         }
 
-        private int findSlot(HighwayBuilderHIG b, Predicate<ItemStack> predicate, boolean hotbar) {
+        private int findSlot(HighwayBuilderWM b, Predicate<ItemStack> predicate, boolean hotbar) {
             for (int i = hotbar ? 0 : 9; i < (hotbar ? 9 : b.mc.player.getInventory().main.size()); i++) {
                 if (predicate.test(b.mc.player.getInventory().getStack(i))) return i;
             }
@@ -2029,7 +2029,7 @@ public class HighwayBuilderHIG extends Module {
             return -1;
         }
 
-        protected int findHotbarSlot(HighwayBuilderHIG b, boolean replaceTools) {
+        protected int findHotbarSlot(HighwayBuilderWM b, boolean replaceTools) {
             int thrashSlot = -1;
             int slotsWithBlocks = 0;
             int slotWithLeastBlocks = -1;
@@ -2070,7 +2070,7 @@ public class HighwayBuilderHIG extends Module {
             return -1;
         }
 
-        protected boolean hasItem(HighwayBuilderHIG b, Predicate<ItemStack> predicate) {
+        protected boolean hasItem(HighwayBuilderWM b, Predicate<ItemStack> predicate) {
             for (int i = 0; i < b.mc.player.getInventory().main.size(); i++) {
                 if (predicate.test(b.mc.player.getInventory().getStack(i))) return true;
             }
@@ -2078,7 +2078,7 @@ public class HighwayBuilderHIG extends Module {
             return false;
         }
 
-        protected int countItem(HighwayBuilderHIG b, Predicate<ItemStack> predicate) {
+        protected int countItem(HighwayBuilderWM b, Predicate<ItemStack> predicate) {
             int count = 0;
             for (int i = 0; i < b.mc.player.getInventory().main.size(); i++) {
                 ItemStack stack = b.mc.player.getInventory().getStack(i);
@@ -2088,7 +2088,7 @@ public class HighwayBuilderHIG extends Module {
             return count;
         }
 
-        protected int findAndMoveToHotbar(HighwayBuilderHIG b, Predicate<ItemStack> predicate) {
+        protected int findAndMoveToHotbar(HighwayBuilderWM b, Predicate<ItemStack> predicate) {
             // Check hotbar
             int slot = findSlot(b, predicate, true);
             if (slot != -1) return slot;
@@ -2110,7 +2110,7 @@ public class HighwayBuilderHIG extends Module {
             return hotbarSlot;
         }
 
-        protected int findAndMoveBestToolToHotbar(HighwayBuilderHIG b, BlockState blockState, boolean noSilkTouch) {
+        protected int findAndMoveBestToolToHotbar(HighwayBuilderWM b, BlockState blockState, boolean noSilkTouch) {
             // Check for creative
             if (b.mc.player.isCreative()) return b.mc.player.getInventory().selectedSlot;
 
@@ -2164,7 +2164,7 @@ public class HighwayBuilderHIG extends Module {
             return hotbarSlot;
         }
 
-        protected int findBlocksToPlace(HighwayBuilderHIG b) {
+        protected int findBlocksToPlace(HighwayBuilderWM b) {
             // find a block and move it to your hotbar
             int slot = findAndMoveToHotbar(b, itemStack -> itemStack.getItem() instanceof BlockItem blockItem && b.blocksToPlace.get().contains(blockItem.getBlock()));
 
@@ -2187,7 +2187,7 @@ public class HighwayBuilderHIG extends Module {
             return slot;
         }
 
-        protected int findBlocksToPlacePrioritizeTrash(HighwayBuilderHIG b) {
+        protected int findBlocksToPlacePrioritizeTrash(HighwayBuilderWM b) {
             int slot = findAndMoveToHotbar(b, itemStack -> {
                 if (!(itemStack.getItem() instanceof BlockItem)) return false;
                 return b.trashItems.get().contains(itemStack.getItem());
@@ -2207,7 +2207,7 @@ public class HighwayBuilderHIG extends Module {
             return this;
         }
 
-        default int placementsPerTick(HighwayBuilderHIG b) {
+        default int placementsPerTick(HighwayBuilderWM b) {
             return b.placementsPerTick.get();
         }
     }
@@ -2501,7 +2501,7 @@ public class HighwayBuilderHIG extends Module {
                 }
 
                 @Override
-                public int placementsPerTick(HighwayBuilderHIG b) {
+                public int placementsPerTick(HighwayBuilderWM b) {
                     return 1;
                 }
             };
@@ -2801,7 +2801,7 @@ public class HighwayBuilderHIG extends Module {
                 }
 
                 @Override
-                public int placementsPerTick(HighwayBuilderHIG b) {
+                public int placementsPerTick(HighwayBuilderWM b) {
                     return 1;
                 }
             };
@@ -2815,13 +2815,13 @@ public class HighwayBuilderHIG extends Module {
 
         private final Block block;
         private final Direction direction;
-        private final HighwayBuilderHIG b;
+        private final HighwayBuilderWM b;
         private final Vector3d vec3 = new Vector3d(0);
 
         private int normalStartTime, packetStartTime;
         private boolean packet;
 
-        public DoubleMineBlock(HighwayBuilderHIG b, BlockPos pos) {
+        public DoubleMineBlock(HighwayBuilderWM b, BlockPos pos) {
             this.b = b;
             this.blockPos = pos;
             this.blockState = b.mc.world.getBlockState(this.blockPos);
@@ -2886,9 +2886,9 @@ public class HighwayBuilderHIG extends Module {
         public boolean materials;
         public boolean pickaxes;
         public boolean food;
-        private final HighwayBuilderHIG b;
+        private final HighwayBuilderWM b;
 
-        public RestockTask(HighwayBuilderHIG b) {
+        public RestockTask(HighwayBuilderWM b) {
             this.b = b;
         }
 

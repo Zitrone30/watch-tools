@@ -1,16 +1,16 @@
-package me.DNS.vmtools.utils;
+package me.DNS.wmtools.utils;
 
 import net.minecraft.util.math.BlockPos;
 
 import static meteordevelopment.meteorclient.MeteorClient.mc;
 import static meteordevelopment.meteorclient.utils.world.BlockUtils.canPlace;
 
-public class HIGUtils {
-    private HIGUtils() {}
+public class WMUtils {
+    private WMUtils() {}
 
     // Block Pos
 
-    public static boolean canPlaceHIG(BlockPos blockPos) {
+    public static boolean canPlaceWM(BlockPos blockPos) {
         return canPlace(blockPos, false);
     }
 

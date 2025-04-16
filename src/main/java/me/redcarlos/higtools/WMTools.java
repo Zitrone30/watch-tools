@@ -1,50 +1,50 @@
-package me.DNS.vmtools;
+package me.DNS.wmtools;
 
 import com.mojang.logging.LogUtils;
 
-import me.DNS.vmtools.commands.Center;
-import me.DNS.vmtools.commands.Coordinates;
-import me.DNS.vmtools.commands.Panorama;
-import me.DNS.vmtools.modules.highwayborers.AxisBorer;
-import me.DNS.vmtools.modules.highwayborers.NegNegBorer;
-import me.DNS.vmtools.modules.highwayborers.NegPosBorer;
-import me.DNS.vmtools.modules.highwayborers.PosNegBorer;
-import me.DNS.vmtools.modules.highwayborers.PosPosBorer;
-import me.DNS.vmtools.modules.hud.TextPresets;
-import me.DNS.vmtools.modules.main.AdvancedPlace;
-import me.DNS.vmtools.modules.main.AfkLogout;
-import me.DNS.vmtools.modules.main.AntiToS;
-import me.DNS.vmtools.modules.main.AutoCenter;
-import me.DNS.vmtools.modules.main.AutoDoors;
-import me.DNS.vmtools.modules.main.AutoLogPlus;
-import me.DNS.vmtools.modules.main.AutoWalkHIG;
-import me.DNS.vmtools.modules.main.AutoWalkP;
-import me.DNS.vmtools.modules.main.AxisViewer;
-import me.DNS.vmtools.modules.main.BedrockWalk;
-import me.DNS.vmtools.modules.main.BoomView;
-import me.DNS.vmtools.modules.main.Conditions;
-import me.DNS.vmtools.modules.main.DiscordRPC;
-import me.DNS.vmtools.modules.main.DoneLogout;
-import me.DNS.vmtools.modules.main.Excuse;
-import me.DNS.vmtools.modules.main.Gravity;
-import me.DNS.vmtools.modules.main.Groupmessage;
-import me.DNS.vmtools.modules.main.HighwayBuilderHIG;
-import me.DNS.vmtools.modules.main.HighwayTools;
-import me.DNS.vmtools.modules.main.HitboxDesync;
-import me.DNS.vmtools.modules.main.HotbarManager;
-import me.DNS.vmtools.modules.main.Jitter;
-import me.DNS.vmtools.modules.main.LiquidFillerHIG;
-import me.DNS.vmtools.modules.main.MassIgnore;
-import me.DNS.vmtools.modules.main.NoPingDif;
-import me.DNS.vmtools.modules.main.OffhandManager;
-import me.DNS.vmtools.modules.main.PermJukebox;
-import me.DNS.vmtools.modules.main.Pulse;
-import me.DNS.vmtools.modules.main.RangeCMD;
-import me.DNS.vmtools.modules.main.SafetyNet;
-import me.DNS.vmtools.modules.main.ScaffoldHIG;
-import me.DNS.vmtools.modules.main.StopDrop;
-import me.DNS.vmtools.modules.main.StreamerMode;
-import me.DNS.vmtools.system.HIGTab;
+import me.DNS.wmtools.commands.Center;
+import me.DNS.wmtools.commands.Coordinates;
+import me.DNS.wmtools.commands.Panorama;
+import me.DNS.wmtools.modules.highwayborers.AxisBorer;
+import me.DNS.wmtools.modules.highwayborers.NegNegBorer;
+import me.DNS.wmtools.modules.highwayborers.NegPosBorer;
+import me.DNS.wmtools.modules.highwayborers.PosNegBorer;
+import me.DNS.wmtools.modules.highwayborers.PosPosBorer;
+import me.DNS.wmtools.modules.hud.TextPresets;
+import me.DNS.wmtools.modules.main.AdvancedPlace;
+import me.DNS.wmtools.modules.main.AfkLogout;
+import me.DNS.wmtools.modules.main.AntiToS;
+import me.DNS.wmtools.modules.main.AutoCenter;
+import me.DNS.wmtools.modules.main.AutoDoors;
+import me.DNS.wmtools.modules.main.AutoLogPlus;
+import me.DNS.wmtools.modules.main.AutoWalkWM;
+import me.DNS.wmtools.modules.main.AutoWalkP;
+import me.DNS.wmtools.modules.main.AxisViewer;
+import me.DNS.wmtools.modules.main.BedrockWalk;
+import me.DNS.wmtools.modules.main.BoomView;
+import me.DNS.wmtools.modules.main.Conditions;
+import me.DNS.wmtools.modules.main.DiscordRPC;
+import me.DNS.wmtools.modules.main.DoneLogout;
+import me.DNS.wmtools.modules.main.Excuse;
+import me.DNS.wmtools.modules.main.Gravity;
+import me.DNS.wmtools.modules.main.Groupmessage;
+import me.DNS.wmtools.modules.main.HighwayBuilderWM;
+import me.DNS.wmtools.modules.main.HighwayTools;
+import me.DNS.wmtools.modules.main.HitboxDesync;
+import me.DNS.wmtools.modules.main.HotbarManager;
+import me.DNS.wmtools.modules.main.Jitter;
+import me.DNS.wmtools.modules.main.LiquidFillerWM;
+import me.DNS.wmtools.modules.main.MassIgnore;
+import me.DNS.wmtools.modules.main.NoPingDif;
+import me.DNS.wmtools.modules.main.OffhandManager;
+import me.DNS.wmtools.modules.main.PermJukebox;
+import me.DNS.wmtools.modules.main.Pulse;
+import me.DNS.wmtools.modules.main.RangeCMD;
+import me.DNS.wmtools.modules.main.SafetyNet;
+import me.DNS.wmtools.modules.main.ScaffoldWM;
+import me.DNS.wmtools.modules.main.StopDrop;
+import me.DNS.wmtools.modules.main.StreamerMode;
+import me.DNS.wmtools.system.WMTab;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
 import meteordevelopment.meteorclient.commands.Commands;
 import meteordevelopment.meteorclient.gui.tabs.Tabs;
@@ -61,7 +61,7 @@ import net.fabricmc.loader.api.metadata.ModMetadata;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
-public class HIGTools extends MeteorAddon {
+public class WMTools extends MeteorAddon {
     public static final String MOD_ID = "higtools";
     public static final ModMetadata METADATA;
     public static final String VERSION;
@@ -82,12 +82,12 @@ public class HIGTools extends MeteorAddon {
 
     @Override
     public void onInitialize() {
-        LogUtils.getLogger().info("Initializing Watchmen Additions {}", HIGTools.VERSION);
+        LogUtils.getLogger().info("Initializing Watchmen Additions {}", WMTools.VERSION);
 
         // Systems
         BetterChat.registerCustomHead("~Watchmen~", identifier("icon.png"));
         MeteorStarscript.ss.set("Watchmen", new ValueMap().set("version", VERSION));
-        Tabs.add(new HIGTab());
+        Tabs.add(new WMTab());
 
         // Commands
         Commands.add(new Center());
@@ -104,15 +104,15 @@ public class HIGTools extends MeteorAddon {
         modules.add(new DoneLogout());
         modules.add(new AfkLogout());
         modules.add(new AutoCenter());
-        modules.add(new AutoWalkHIG());
+        modules.add(new AutoWalkWM());
         modules.add(new AxisViewer());
         modules.add(new DiscordRPC());
-        modules.add(new HighwayBuilderHIG());
+        modules.add(new HighwayBuilderWM());
         modules.add(new HighwayTools());
         modules.add(new HotbarManager());
-        modules.add(new LiquidFillerHIG());
+        modules.add(new LiquidFillerWM());
         modules.add(new OffhandManager());
-        modules.add(new ScaffoldHIG());
+        modules.add(new ScaffoldWM());
         modules.add(new PermJukebox());
         modules.add(new Groupmessage());
         modules.add(new MassIgnore());
@@ -144,7 +144,7 @@ public class HIGTools extends MeteorAddon {
 
     @Override
     public String getPackage() {
-        return "me.DNS.vmtools";
+        return "me.DNS.wmtools";
     }
 
     @Override

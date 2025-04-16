@@ -1,7 +1,7 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
-import me.DNS.vmtools.utils.ListMode;
+import me.DNS.wmtools.WMTools;
+import me.DNS.wmtools.utils.ListMode;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.mixininterface.IVec3d;
 import meteordevelopment.meteorclient.settings.*;
@@ -22,7 +22,7 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.List;
 
-public class ScaffoldHIG extends Module {
+public class ScaffoldWM extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
     private final Setting<ListMode> listMode = sgGeneral.add(new EnumSetting.Builder<ListMode>()
@@ -75,8 +75,8 @@ public class ScaffoldHIG extends Module {
 
     private boolean worked = false;
 
-    public ScaffoldHIG() {
-        super(HIGTools.MAIN, "scaffold-HIG", "Scaffolds blocks under you.");
+    public ScaffoldWM() {
+        super(WMTools.MAIN, "scaffold-WM", "Scaffolds blocks under you.");
     }
 
     @EventHandler
