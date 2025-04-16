@@ -30,29 +30,38 @@ public class DoneLogout extends Module {
         super(HIGTools.MAIN, "HighwayCheck", "Logs out if there's another highway in front of the player.");
     }
 
-    @EventHandler
+@EventHandler
     private void onTick(TickEvent.Post event) {
         if (mc.player == null || mc.world == null) return;
 
         Direction facing = mc.player.getHorizontalFacing();
+        BlockPos playerPos = mc.player.getBlockPos();
+        BlockPos centerPos = playerPos.offset(facing).down(); // Middle block in front
 
-        for (int i = 1; i <= range.get(); i++) {
-            BlockPos checkPos = mc.player.getBlockPos().offset(facing, i).down();
+        // Determine axis perpendicular to facing direction (left/right direction)
+        Direction sideDir = facing.rotateYClockwise(); // Rotate 90° clockwise to get perpendicular
 
-            if (mc.world.getBlockState(checkPos).isOf(Blocks.OBSIDIAN)) {
-                BlockPos logoutPos = mc.player.getBlockPos();
-                String coords = String.format("Logged at X: %d, Y: %d, Z: %d",
-                        logoutPos.getX(), logoutPos.getY(), logoutPos.getZ());
+        boolean allObsidian = true;
 
-                info("Obsidian detected " + i + " blocks ahead. Logging out.");
-                info(coords);
+        for (int i = -2; i <= 2; i++) {
+            BlockPos checkPos = centerPos.offset(sideDir, i);
 
-
-                mc.world.disconnect();
-                mc.disconnect(); // Cleans up network connection
-                mc.setScreen(new TitleScreen()); // Return to main menu
+            if (!mc.world.getBlockState(checkPos).isOf(Blocks.OBSIDIAN)) {
+                allObsidian = false;
                 break;
             }
+        }
+
+        if (allObsidian) {
+            String coords = String.format("Logged at X: %d, Y: %d, Z: %d",
+                playerPos.getX(), playerPos.getY(), playerPos.getZ());
+
+            info("5-wide obsidian block detected in front. Logging out.");
+            info(coords);
+
+            mc.world.disconnect();
+            mc.disconnect(); // Clean up
+            mc.setScreen(new TitleScreen()); // Go to menu
         }
     }
 }
