@@ -1,6 +1,6 @@
-package me.DNS.vmtools.modules.main;
+package me.DNS.wmtools.modules.main;
 
-import me.DNS.higtools.WMTools;
+import me.DNS.wmtools.WMTools;
 import meteordevelopment.meteorclient.events.world.TickEvent;
 import meteordevelopment.meteorclient.settings.BoolSetting;
 import meteordevelopment.meteorclient.settings.IntSetting;
@@ -15,7 +15,7 @@ import meteordevelopment.orbit.EventHandler;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.item.Items;
 
-public class AutoWalkHIG extends Module {
+public class AutoWalkWM extends Module {
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
 
     private final Setting<Boolean> pauseOnLag = sgGeneral.add(new BoolSetting.Builder()
@@ -59,8 +59,8 @@ public class AutoWalkHIG extends Module {
     private double originY;
     private boolean sentLagMessage;
 
-    public AutoWalkHIG() {
-        super(HIGTools.MAIN, "auto-walk-HIG", "Automatically walks forward (optimized for highway digging).");
+    public AutoWalkWM() {
+        super(WMTools.MAIN, "auto-walk-WM", "Automatically walks forward (optimized for highway digging).");
     }
 
     @Override
