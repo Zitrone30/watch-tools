@@ -1,7 +1,6 @@
 /*
  * This file is part of the Meteor Client distribution (https://github.com/MeteorDevelopment/meteor-client).
  * Copyright (c) Meteor Development.
- * Enhanced by RedCarlos26
  */
 
 package me.DNS.vmtools.modules.main;
