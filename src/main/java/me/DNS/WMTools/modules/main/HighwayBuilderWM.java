@@ -747,9 +747,14 @@ public class HighwayBuilderWM extends Module {
     }
 
     private void disconnect(String message, Object... args) {
-        MutableText text = Text.literal(String.format("%s[%s%s%s] %s", Formatting.GRAY, Formatting.BLUE, title, Formatting.GRAY, Formatting.RED) + String.format(message, args)).append("\n");
-        text.append(getStatsText());
-
+        MutableText text = Text.literal("<")
+        .styled(style -> style.withColor(Formatting.BLACK))
+        .append(Text.literal(title).styled(style -> style.withColor(Formatting.RED)))
+        .append(Text.literal("> ").styled(style -> style.withColor(Formatting.BLACK)))
+        .append(Text.literal(String.format(message, args)).styled(style -> style.withColor(Formatting.RED)))
+        .append("\n")
+        .append(getStatsText());
+    
         mc.getNetworkHandler().getConnection().disconnect(text);
     }
 

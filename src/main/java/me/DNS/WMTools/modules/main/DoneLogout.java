@@ -32,7 +32,7 @@ public class DoneLogout extends Module {
         .build()
     );
 
-    private final Setting<Boolean> ToggleOnDc = sgGeneral.add(
+    private final Setting<Boolean> ToggleOnUse = sgGeneral.add(
         new BoolSetting.Builder()
             .name("ToggleOnUse")
             .description("Toggles the module on Use. Highly recommend as joining with it on can crash you")
@@ -83,8 +83,9 @@ private void onTick(TickEvent.Post event) {
         mc.world.disconnect();
         mc.disconnect(); // Clean up
         mc.setScreen(new TitleScreen()); // Go to menu
-        if (ToggleOnDc.get()) { //toggle if set
-            toggle();
+        if (ToggleOnUse.set(true)) {
+            toggle(); 
+            ToggleOnUse.set(false);
         }
     }
 }}
