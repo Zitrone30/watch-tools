@@ -81,8 +81,6 @@ private void onTick(TickEvent.Post event) {
         info(coords);
 
         mc.world.disconnect();
-        mc.disconnect(); // Clean up
-        mc.setScreen(new TitleScreen()); // Go to menu
         if (ToggleOnUse.set(true)) {
             toggle(); 
             ToggleOnUse.set(false);
