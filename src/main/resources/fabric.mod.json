@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "name": "Watchmen Additions",
   "id": "wmtools",
-  "version": "1.2.3",
+  "version": "1.2.2",
   "description": "Meteor client additions for use by The Watchmen.",
   "authors": [
     "RocoPlays & DNS"

@@ -46,7 +46,7 @@ public class DoneLogout extends Module {
             .sliderRange(1.0, 10.0)
             .build()
     );
-
+/*
     private final Setting<Boolean> ToggleOnUse = sgGeneral.add(
         new BoolSetting.Builder()
             .name("ToggleOnUse")
@@ -54,7 +54,7 @@ public class DoneLogout extends Module {
             .defaultValue(true)
             .build()
     );
-
+*/
     private final Setting<Boolean> ToggleautoReconnect = sgGeneral.add(
         new BoolSetting.Builder()
             .name("AutoReconnect")
@@ -94,11 +94,14 @@ public class DoneLogout extends Module {
             String coords = String.format("Logged at X: %d, Y: %d, Z: %d",
                 playerPos.getX(), playerPos.getY(), playerPos.getZ());
 
-            info("5-wide obsidian block detected in front. Logging out.");
-            info(coords);
+            info("5-wide obsidian block detected in front. Logging out at: " + coords);
 
-            disconnect("5-wide obsidian block detected in front at" + coords);
-            if (ToggleOnUse.get()) toggle(); 
+            disconnect("5-wide obsidian block detected, " + coords);
+            /*
+            if (ToggleOnUse.get()) {
+                toggle();
+            }
+            */
             if (ToggleautoReconnect.get() && Modules.get().isActive(AutoReconnect.class)) Modules.get().get(AutoReconnect.class).toggle();
         }
     }
