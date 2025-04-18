@@ -12,6 +12,10 @@ import meteordevelopment.orbit.EventHandler;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import meteordevelopment.meteorclient.systems.modules.Module;
+import meteordevelopment.meteorclient.systems.modules.Modules;
+import meteordevelopment.meteorclient.systems.modules.misc.AutoReconnect;
+import net.minecraft.text.Text;
 
 public class DoneLogout extends Module { 
     private final SettingGroup sgGeneral = settings.getDefaultGroup();
@@ -51,6 +55,20 @@ public class DoneLogout extends Module {
             .build()
     );
 
+    private final Setting<Boolean> ToggleautoReconnect = sgGeneral.add(
+        new BoolSetting.Builder()
+            .name("AutoReconnect")
+            .description("Disables AutoReconnect when logging out.")
+            .defaultValue(true)
+            .build()
+    );
+
+    private void disconnect(String message) {
+        if (mc.player != null && mc.getNetworkHandler() != null) {
+            mc.getNetworkHandler().getConnection().disconnect(Text.literal(message));
+        }
+    }
+
     @EventHandler
     private void onTick(TickEvent.Post event) {
         if (mc.player == null || mc.world == null) return;
@@ -79,11 +97,9 @@ public class DoneLogout extends Module {
             info("5-wide obsidian block detected in front. Logging out.");
             info(coords);
 
-            mc.world.disconnect();
-            if (ToggleOnUse.get()) {
-                toggle(); 
-                ToggleOnUse.set(false);
-            }
+            disconnect("5-wide obsidian block detected in front. Logging out.");
+            if (ToggleOnUse.get()) toggle(); 
+            if (ToggleautoReconnect.get() && Modules.get().isActive(AutoReconnect.class)) Modules.get().get(AutoReconnect.class).toggle();
         }
     }
 
