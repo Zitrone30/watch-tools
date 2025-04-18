@@ -97,7 +97,7 @@ public class DoneLogout extends Module {
             info("5-wide obsidian block detected in front. Logging out.");
             info(coords);
 
-            disconnect("5-wide obsidian block detected in front. Logging out.");
+            disconnect("5-wide obsidian block detected in front at" + coords);
             if (ToggleOnUse.get()) toggle(); 
             if (ToggleautoReconnect.get() && Modules.get().isActive(AutoReconnect.class)) Modules.get().get(AutoReconnect.class).toggle();
         }
